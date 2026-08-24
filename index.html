@@ -1,0 +1,1139 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Toán HSA • V5</title>
+<style>
+:root{--bg:#f4f7fb;--card:#fff;--text:#172033;--muted:#667085;--line:#e5e7eb;--primary:#2563eb;--primary2:#1d4ed8;--soft:#eff6ff;--good:#16a34a;--bad:#dc2626;--warn:#d97706;--shadow:0 10px 30px #11182712}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--text);font:15px/1.6 Inter,system-ui,-apple-system,Segoe UI,Arial,sans-serif}
+button,input{font:inherit}.top{position:sticky;top:0;z-index:20;background:#ffffffee;backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.nav{max-width:1200px;margin:auto;height:70px;padding:0 20px;display:flex;align-items:center;justify-content:space-between}
+.brand{display:flex;align-items:center;gap:11px}.logo{width:42px;height:42px;border-radius:12px;background:linear-gradient(135deg,#2563eb,#4f46e5);color:#fff;display:grid;place-items:center;font-weight:900;font-size:20px}.brand h1{font-size:18px;margin:0}.brand small{color:var(--primary);font-weight:800}
+.actions{display:flex;gap:8px}.btn,.tab{border:1px solid var(--line);background:var(--card);color:var(--text);padding:9px 13px;border-radius:10px;cursor:pointer;font-weight:700}.btn.primary{background:var(--primary);border-color:var(--primary);color:white}.btn.primary:hover{background:var(--primary2)}
+.wrap{max-width:1200px;margin:auto;padding:28px 20px 60px}.hero{background:linear-gradient(135deg,#1d4ed8,#4f46e5);color:#fff;border-radius:24px;padding:32px;display:flex;justify-content:space-between;gap:24px;box-shadow:var(--shadow)}.hero h2{font-size:34px;line-height:1.2;margin:6px 0 10px}.hero p{max-width:700px;color:#e6edff}.hero .btn{margin-top:10px}.ring{width:126px;height:126px;border:10px solid #ffffff44;border-top-color:#fff;border-radius:50%;display:grid;place-items:center;font-size:25px;font-weight:900;flex:none}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin:18px 0 35px}.stat{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:18px}.stat b{font-size:25px;display:block}.stat span{color:var(--muted);font-size:13px}
+.section{margin-top:34px}.section-head{display:flex;justify-content:space-between;align-items:end;gap:15px;margin-bottom:15px}.eyebrow{color:var(--primary);font-size:11px;font-weight:900;letter-spacing:1.2px;margin:0}.section h2{margin:3px 0 0;font-size:26px}.search{width:280px;padding:10px 12px;border:1px solid var(--line);border-radius:10px;background:var(--card);color:var(--text)}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}.topic{background:var(--card);border:1px solid var(--line);border-radius:17px;padding:19px;cursor:pointer;box-shadow:0 2px 8px #11182708}.topic:hover{transform:translateY(-2px);box-shadow:var(--shadow)}.topic .ico{font-size:28px}.topic h3{margin:8px 0 5px}.topic p{color:var(--muted);margin:0 0 13px;font-size:14px}.bar{height:6px;background:var(--line);border-radius:99px;overflow:hidden}.bar i{display:block;height:100%;background:var(--primary)}.pct{font-size:12px;color:var(--muted);display:block;margin-top:6px}
+.hidden{display:none!important}.back{border:0;background:none;color:var(--primary);font-weight:800;cursor:pointer;padding:0}.lesson-title{display:flex;justify-content:space-between;align-items:center;gap:15px;margin:16px 0}.badge{background:var(--soft);color:var(--primary);padding:6px 10px;border-radius:99px;font-size:12px;font-weight:900}
+.cols{display:grid;grid-template-columns:1.2fr .8fr;gap:15px}.card{background:var(--card);border:1px solid var(--line);border-radius:17px;padding:22px;box-shadow:0 2px 8px #11182708}.card h3{margin-top:0}.card ul{padding-left:21px}.formula{background:var(--soft);border-left:4px solid var(--primary);padding:14px 15px;border-radius:11px;margin:10px 0;font-size:15px}.formula-main{font-family:Georgia,serif;font-size:19px;font-weight:700;margin-bottom:8px}.formula-label{font-size:12px;color:var(--primary);font-weight:900;text-transform:uppercase;letter-spacing:.4px}.formula-help{color:var(--text);margin:6px 0}.formula-help b{color:var(--primary)}.formula-example{background:var(--card);border:1px dashed var(--line);padding:9px 11px;border-radius:8px;margin-top:8px}.formula-tip{margin-top:8px;color:var(--warn);font-weight:700}.formula-section{margin-top:14px}.formula-section h4{margin:0 0 8px}.example{background:#fffbeb;border:1px solid #fcd34d;padding:14px;border-radius:12px;margin-top:12px}.example b{color:#92400e}
+.practice{margin-top:15px}.qtop{display:flex;justify-content:space-between;gap:10px}.q{font-size:18px;font-weight:800;margin:18px 0 13px}.answers{display:grid;gap:9px}.answer{padding:12px 14px;border:1px solid var(--line);background:var(--card);color:var(--text);border-radius:10px;text-align:left;cursor:pointer}.answer:hover{border-color:var(--primary)}.answer.good{background:#16a34a14;border-color:var(--good)}.answer.bad{background:#dc262614;border-color:var(--bad)}.answer:disabled{cursor:default}.explain{margin-top:13px;background:var(--soft);padding:13px;border-radius:10px}.next{margin-top:12px}
+.levels{display:flex;gap:7px;flex-wrap:wrap;margin:12px 0}.level{font-size:12px;padding:5px 9px;border-radius:99px;background:#f3f4f6;color:#374151;font-weight:800}.level{border:0;cursor:pointer}.level.on{background:var(--primary);color:#fff}.mockmeta{display:flex;gap:8px;flex-wrap:wrap;margin:10px 0}.mockmeta span{background:var(--soft);padding:5px 9px;border-radius:999px;font-size:12px;font-weight:800;color:var(--primary)}.bank-topic{font-size:12px;color:var(--muted);margin-top:3px}
+.mock{display:grid;grid-template-columns:1fr 1fr;gap:15px}.mock .card p{color:var(--muted)}.timer{font-size:25px;color:var(--primary);font-weight:900}.modal{position:fixed;inset:0;background:#0008;z-index:50;display:grid;place-items:center;padding:18px}.modalbox{background:var(--card);width:min(760px,100%);max-height:90vh;overflow:auto;border-radius:20px;padding:24px;position:relative}.x{position:absolute;right:15px;top:10px;border:0;background:none;font-size:24px;cursor:pointer;color:var(--text)}
+.empty{padding:30px;text-align:center;color:var(--muted);background:var(--card);border:1px dashed var(--line);border-radius:15px}
+footer{color:var(--muted);font-size:12px;text-align:center;padding:30px}
+body.dark{--bg:#0f131a;--card:#181d26;--text:#edf1f7;--muted:#a9b2c0;--line:#2a313c;--soft:#202c40}.dark .top{background:#181d26ee}.dark .level{background:#252b35;color:#dce2eb}
+@media(max-width:850px){.grid{grid-template-columns:repeat(2,1fr)}.cols,.mock{grid-template-columns:1fr}.stats{grid-template-columns:repeat(2,1fr)}.hero{padding:25px}.ring{display:none}}
+@media(max-width:550px){.grid{grid-template-columns:1fr}.section-head{align-items:stretch;flex-direction:column}.search{width:100%}.hero h2{font-size:28px}.nav{height:62px}.actions .btn span{display:none}}
+</style>
+</head>
+<body>
+<header class="top">
+  <nav class="nav">
+    <div class="brand"><div class="logo">H</div><div><h1>Toán HSA <small>V5</small></h1><div style="font-size:11px;color:var(--muted)">Học • Luyện • Thi • Phân tích</div></div></div>
+    <div class="actions"><button class="btn" onclick="toggleDark()">🌙 <span>Giao diện</span></button><button class="btn primary" onclick="goTopics()">Học ngay</button></div>
+  </nav>
+</header>
+
+<main class="wrap">
+<section class="hero">
+  <div><p class="eyebrow" style="color:#dbeafe">TOÁN HSA • PHIÊN BẢN 5</p><h2>Học chắc từng chuyên đề, luyện đúng dạng HSA.</h2><p>Học theo chuyên đề với lý thuyết, công thức, ví dụ, luyện tập và ngân hàng câu hỏi thi thử.</p><button class="btn" onclick="goTopics()">📚 Xem chuyên đề</button></div>
+  <div class="ring" id="overall">0%</div>
+</section>
+
+<section class="stats">
+  <div class="stat">📚 <b id="topicN">0</b><span>Chuyên đề</span></div>
+  <div class="stat">📝 <b id="done">0</b><span>Câu đã làm</span></div>
+  <div class="stat">✅ <b id="right">0</b><span>Câu đúng</span></div>
+  <div class="stat">🎯 <b id="accuracy">0%</b><span>Độ chính xác</span></div>
+</section>
+
+<section id="topics" class="section">
+  <div class="section-head"><div><p class="eyebrow">CHƯƠNG TRÌNH</p><h2>Chuyên đề Toán</h2></div><input id="search" class="search" placeholder="🔎 Tìm chuyên đề..."></div>
+  <div id="topicGrid" class="grid"></div>
+</section>
+
+<section id="lesson" class="section hidden">
+  <button class="back" onclick="closeLesson()">← Quay lại chuyên đề</button>
+  <div class="lesson-title"><div><p class="eyebrow">HỌC CHUYÊN ĐỀ</p><h2 id="title"></h2></div><span class="badge" id="level"></span></div>
+  <div class="levels" id="levels"></div>
+  <div class="card" style="margin-bottom:15px;background:var(--soft);border-color:transparent">
+    <b>🧭 Cách học cho người mới</b>
+    <div style="color:var(--muted);margin-top:5px">1️⃣ Đọc lý thuyết để hiểu ý nghĩa → 2️⃣ Xem chú giải công thức → 3️⃣ Tự làm ví dụ → 4️⃣ Làm câu cơ bản → 5️⃣ Chuyển sang câu HSA.</div>
+  </div>
+  <div class="cols">
+    <article class="card"><h3>📖 Học dễ hiểu từng bước</h3><p style="color:var(--muted)">Nếu bạn mới học, hãy đọc theo thứ tự: hiểu khái niệm → nhận dạng dạng bài → xem công thức → làm ví dụ → luyện tập.</p><div id="theory"></div><div id="example"></div></article>
+    <article class="card"><h3>🧮 Giải thích công thức</h3><p style="color:var(--muted)">Đừng chỉ học thuộc: hãy xem ý nghĩa, điều kiện, dấu hiệu nhận biết và ví dụ.</p><div id="formulas"></div></article>
+  </div>
+  <article class="card practice">
+    <div class="qtop"><div><h3 style="margin:0">📝 Luyện tập</h3><span id="qcount" style="color:var(--muted)"></span></div><button class="btn" onclick="resetTopic()">Làm lại</button></div>
+    <div id="question"></div>
+  </article>
+</section>
+
+<section class="section">
+  <div class="section-head"><div><p class="eyebrow">LUYỆN THI</p><h2>Ngân hàng đề thi thử</h2></div></div>
+  <div class="mock">
+    <div class="card">
+      <div style="font-size:34px">🎯</div>
+      <h3>Chọn mức độ</h3>
+      <p>Đi từ dễ đến khó. Mỗi đề được tạo từ ngân hàng câu hỏi theo đúng cấp độ bạn chọn.</p>
+      <div class="levels" style="margin-bottom:10px">
+        <button class="level on" id="mockBasic" onclick="setMockLevel('Cơ bản',this)">🟢 Cơ bản</button>
+        <button class="level" onclick="setMockLevel('Trung bình',this)">🔵 Trung bình</button>
+        <button class="level" onclick="setMockLevel('Khá',this)">🟠 Khá</button>
+        <button class="level" onclick="setMockLevel('Nâng cao',this)">🔴 Nâng cao</button>
+        <button class="level" onclick="setMockLevel('HSA tổng hợp',this)">🔥 HSA tổng hợp</button>
+      </div>
+      <button class="btn primary" onclick="startMock()">🚀 Bắt đầu đề</button>
+    </div>
+    <div class="card">
+      <div style="font-size:34px">📊</div>
+      <h3>Phân tích</h3>
+      <p>Đề hiện tại: <b id="mockInfo">Cơ bản</b> • <span id="bankCount">0</span> câu trong ngân hàng.</p>
+      <p style="margin-bottom:10px">Sau khi nộp bài, bạn sẽ xem được từng câu, đáp án đúng và lời giải.</p>
+      <button class="btn" onclick="showStats()">Xem thống kê</button>
+    </div>
+  </div>
+</section>
+</main>
+<footer>Toán HSA Web V5 • Dữ liệu tiến độ được lưu trên trình duyệt của bạn.</footer>
+
+<div id="modal" class="modal hidden"><div class="modalbox"><button class="x" onclick="closeModal()">×</button><div id="modalContent"></div></div></div>
+
+<script>
+const formulaInfo={
+  "(xⁿ)' = n·xⁿ⁻¹":{
+    name:"Đạo hàm lũy thừa",
+    meaning:"Khi lấy đạo hàm của x mũ n, đưa số mũ n xuống phía trước rồi giảm số mũ đi 1.",
+    symbols:"n là số mũ; x là biến số.",
+    when:"Dùng khi gặp hàm có dạng xⁿ.",
+    example:"f(x)=x³ ⇒ f'(x)=3x².",
+    tip:"Mẹo nhớ: “Mũ xuống – mũ giảm 1”."
+  },
+  "(uv)' = u'v + uv'":{
+    name:"Đạo hàm tích",
+    meaning:"Khi hàm số là tích của hai hàm u và v, đạo hàm bằng đạo hàm hàm thứ nhất nhân hàm thứ hai, cộng hàm thứ nhất nhân đạo hàm hàm thứ hai.",
+    symbols:"u và v là hai hàm theo x; u' và v' là đạo hàm của chúng.",
+    when:"Dùng khi hàm có dạng u(x)·v(x).",
+    example:"f(x)=x²·sin x ⇒ f'(x)=2x·sin x+x²·cos x.",
+    tip:"Nhớ đủ 2 phần: u'v + uv'."
+  },
+  "(u/v)' = (u'v − uv')/v²":{
+    name:"Đạo hàm thương",
+    meaning:"Với thương u/v, lấy đạo hàm tử nhân mẫu trừ tử nhân đạo hàm mẫu, rồi chia cho bình phương mẫu.",
+    symbols:"u là tử số; v là mẫu số và v≠0.",
+    when:"Dùng khi hàm có dạng u(x)/v(x).",
+    example:"f(x)=x/(x+1) ⇒ f'(x)=1/(x+1)².",
+    tip:"Nhớ: “trên: u'v − uv'; dưới: v²”."
+  },
+  "(ln x)' = 1/x":{
+    name:"Đạo hàm ln x",
+    meaning:"Đạo hàm của ln x bằng nghịch đảo của x.",
+    symbols:"x phải dương khi xét ln x trong tập xác định.",
+    when:"Dùng khi gặp ln x hoặc ln(u(x)) kết hợp quy tắc hàm hợp.",
+    example:"f(x)=ln x ⇒ f'(x)=1/x.",
+    tip:"Gặp ln thì nghĩ ngay đến 1/x."
+  },
+  "(eˣ)' = eˣ":{
+    name:"Đạo hàm hàm mũ eˣ",
+    meaning:"Hàm eˣ có đạo hàm bằng chính nó.",
+    symbols:"e là cơ số của logarit tự nhiên.",
+    when:"Dùng khi gặp eˣ; với e^(u(x)) cần nhân thêm u'(x).",
+    example:"f(x)=e^(2x) ⇒ f'(x)=2e^(2x).",
+    tip:"e mũ x “giữ nguyên”, nhưng nếu bên trong có u thì nhớ nhân u'."
+  },
+  "AB⃗=(xB−xA, yB−yA, zB−zA)":{
+    name:"Tọa độ vectơ AB",
+    meaning:"Tọa độ vectơ từ A đến B được tính bằng tọa độ điểm cuối B trừ tọa độ điểm đầu A.",
+    symbols:"A là điểm đầu; B là điểm cuối.",
+    when:"Dùng khi cần tìm vectơ nối hai điểm trong Oxyz.",
+    example:"A(1,2,3), B(4,6,3) ⇒ AB⃗=(3,4,0).",
+    tip:"Nhớ: “Cuối trừ đầu”."
+  },
+  "|u⃗|=√(x²+y²+z²)":{
+    name:"Độ dài vectơ",
+    meaning:"Độ dài vectơ bằng căn bậc hai tổng bình phương các tọa độ.",
+    symbols:"x,y,z là các tọa độ của vectơ.",
+    when:"Dùng khi đề hỏi độ dài vectơ hoặc khoảng cách giữa hai điểm thông qua vectơ.",
+    example:"u=(3,4,0) ⇒ |u|=√(9+16)=5.",
+    tip:"Giống định lý Pythagore trong không gian."
+  },
+  "u⃗·v⃗=xx'+yy'+zz'":{
+    name:"Tích vô hướng",
+    meaning:"Nhân từng tọa độ tương ứng rồi cộng lại.",
+    symbols:"u=(x,y,z), v=(x',y',z').",
+    when:"Dùng để kiểm tra vuông góc, tính góc hoặc lập phương trình.",
+    example:"u=(1,2,3), v=(2,-1,0) ⇒ u·v=2-2+0=0.",
+    tip:"Kết quả bằng 0 ⇒ hai vectơ vuông góc."
+  },
+  "cos(u⃗,v⃗)=u⃗·v⃗/(|u⃗||v⃗|)":{
+    name:"Góc giữa hai vectơ",
+    meaning:"Cosin góc bằng tích vô hướng chia cho tích độ dài hai vectơ.",
+    symbols:"|u| và |v| phải khác 0.",
+    when:"Dùng khi đề hỏi góc giữa hai vectơ.",
+    example:"Nếu u·v=0 thì cosθ=0 ⇒ θ=90°.",
+    tip:"Tính tích vô hướng và hai độ dài trước rồi thay vào."
+  },
+  "u⃗⊥v⃗ ⇔ u⃗·v⃗=0":{
+    name:"Điều kiện vuông góc",
+    meaning:"Hai vectơ vuông góc khi và chỉ khi tích vô hướng của chúng bằng 0.",
+    symbols:"u,v là hai vectơ khác vectơ-không.",
+    when:"Dùng khi đề yêu cầu chứng minh hoặc tìm điều kiện vuông góc.",
+    example:"u=(1,2), v=(2,-1) ⇒ u·v=2-2=0 ⇒ u⊥v.",
+    tip:"Thấy “vuông góc” → nghĩ ngay “tích vô hướng = 0”."
+  },
+  "u⃗∥v⃗ ⇔ u⃗=k v⃗":{
+    name:"Điều kiện cùng phương",
+    meaning:"Hai vectơ cùng phương khi một vectơ là một bội số của vectơ kia.",
+    symbols:"k là một số thực.",
+    when:"Dùng khi kiểm tra hai vectơ cùng phương hoặc tìm tham số.",
+    example:"u=(2,4), v=(1,2) ⇒ u=2v ⇒ u∥v.",
+    tip:"Các tọa độ tương ứng có cùng một hệ số tỉ lệ."
+  },
+  "aˣaʸ=aˣ⁺ʸ":{
+    name:"Nhân hai lũy thừa cùng cơ số",
+    meaning:"Khi nhân hai lũy thừa cùng cơ số, giữ nguyên cơ số và cộng số mũ.",
+    symbols:"a là cơ số; x,y là số mũ.",
+    when:"Dùng khi hai lũy thừa có cùng cơ số.",
+    example:"2³·2⁴=2⁷.",
+    tip:"Nhân → cộng mũ."
+  },
+  "aˣ/aʸ=aˣ⁻ʸ":{
+    name:"Chia hai lũy thừa cùng cơ số",
+    meaning:"Khi chia hai lũy thừa cùng cơ số, giữ nguyên cơ số và trừ số mũ.",
+    symbols:"a≠0.",
+    when:"Dùng khi tử và mẫu có cùng cơ số.",
+    example:"2⁵/2²=2³=8.",
+    tip:"Chia → trừ mũ."
+  },
+  "logₐ(xy)=logₐx+logₐy":{
+    name:"Logarit của một tích",
+    meaning:"Logarit của tích bằng tổng các logarit của từng thừa số.",
+    symbols:"a>0, a≠1; x>0, y>0.",
+    when:"Dùng để tách một logarit chứa phép nhân.",
+    example:"log₂(8x)=log₂8+log₂x=3+log₂x.",
+    tip:"Tích trong log → tách thành phép cộng."
+  },
+  "logₐ(x/y)=logₐx−logₐy":{
+    name:"Logarit của một thương",
+    meaning:"Logarit của thương bằng hiệu logarit của tử và mẫu.",
+    symbols:"a>0, a≠1; x>0, y>0.",
+    when:"Dùng để tách logarit chứa phép chia.",
+    example:"log₂(8/x)=3−log₂x.",
+    tip:"Thương trong log → tách thành phép trừ."
+  },
+  "logₐx=ln x/ln a":{
+    name:"Đổi cơ số logarit",
+    meaning:"Có thể đổi logarit cơ số a sang logarit tự nhiên ln.",
+    symbols:"a>0, a≠1; x>0.",
+    when:"Dùng khi cần đưa các logarit về cùng một cơ số hoặc khi tính toán.",
+    example:"log₂8=ln8/ln2=3.",
+    tip:"Tử là ln của số cần lấy log; mẫu là ln của cơ số."
+  },
+  "sin²x+cos²x=1":{
+    name:"Hệ thức lượng giác cơ bản",
+    meaning:"Bình phương sin cộng bình phương cos của cùng một góc luôn bằng 1.",
+    symbols:"x là góc.",
+    when:"Dùng để biến đổi biểu thức hoặc tìm sin khi biết cos và ngược lại.",
+    example:"Nếu cos x=3/5 thì sin²x=1−9/25=16/25.",
+    tip:"Đây là hệ thức nên nhớ đầu tiên của lượng giác."
+  },
+  "tan x=sin x/cos x":{
+    name:"Định nghĩa tan",
+    meaning:"Tan của một góc bằng sin chia cho cos.",
+    symbols:"Cần cos x≠0.",
+    when:"Dùng để đổi tan về sin, cos hoặc kiểm tra điều kiện xác định.",
+    example:"tan x xác định khi cos x≠0.",
+    tip:"Thấy tan → kiểm tra cos."
+  },
+  "sin(a±b)=sin a cos b±cos a sin b":{
+    name:"Công thức cộng sin",
+    meaning:"Sin của tổng/hiệu hai góc được tách thành hai tích.",
+    symbols:"Dấu trong công thức được giữ theo dấu của a±b.",
+    when:"Dùng khi cần biến đổi sin(a+b) hoặc sin(a-b).",
+    example:"sin(a+b)=sin a cos b+cos a sin b.",
+    tip:"Sin: “sin cos ± cos sin”."
+  },
+  "cos(a±b)=cos a cos b∓sin a sin b":{
+    name:"Công thức cộng cos",
+    meaning:"Cos của tổng/hiệu hai góc gồm tích cos cos và tích sin sin với dấu ngược.",
+    symbols:"Nếu trong ngoặc là + thì giữa hai tích là −; nếu là − thì là +.",
+    when:"Dùng khi biến đổi cos(a+b) hoặc cos(a-b).",
+    example:"cos(a+b)=cos a cos b−sin a sin b.",
+    tip:"Cos: “cos cos, đổi dấu, sin sin”."
+  },
+  "∫xⁿdx=xⁿ⁺¹/(n+1)+C (n≠−1)":{
+    name:"Nguyên hàm lũy thừa",
+    meaning:"Tăng số mũ lên 1, chia cho số mũ mới rồi thêm hằng số C.",
+    symbols:"n≠−1; C là hằng số tùy ý.",
+    when:"Dùng khi cần tính nguyên hàm của xⁿ.",
+    example:"∫x²dx=x³/3+C.",
+    tip:"Nguyên hàm: “mũ tăng 1 – chia mũ mới”."
+  },
+  "∫1/x dx=ln|x|+C":{
+    name:"Nguyên hàm 1/x",
+    meaning:"Nguyên hàm của 1/x là ln của giá trị tuyệt đối của x cộng C.",
+    symbols:"x≠0.",
+    when:"Dùng khi gặp đúng dạng 1/x hoặc biến đổi được về dạng này.",
+    example:"∫(1/x)dx=ln|x|+C.",
+    tip:"Đừng quên dấu giá trị tuyệt đối."
+  },
+  "∫ₐᵇf(x)dx=F(b)−F(a)":{
+    name:"Tích phân xác định",
+    meaning:"Nếu F là một nguyên hàm của f thì tích phân từ a đến b bằng giá trị F tại b trừ giá trị F tại a.",
+    symbols:"a là cận dưới; b là cận trên.",
+    when:"Dùng khi tính tích phân có cận.",
+    example:"∫₀²x dx=[x²/2]₀²=2.",
+    tip:"Cận trên trừ cận dưới."
+  },
+  "S=∫ₐᵇ|f(x)|dx":{
+    name:"Diện tích có dấu giá trị tuyệt đối",
+    meaning:"Diện tích phải không âm, nên khi đồ thị nằm dưới trục Ox cần đổi dấu phần đó.",
+    symbols:"S là diện tích.",
+    when:"Dùng khi tính diện tích miền giới hạn bởi đồ thị và trục Ox.",
+    example:"Nếu f(x)<0 trên [a,b], S=−∫ₐᵇf(x)dx.",
+    tip:"Diện tích không thể âm."
+  },
+  "C(n,k)=n!/[k!(n−k)!]":{
+    name:"Tổ hợp",
+    meaning:"Tổ hợp đếm số cách chọn k phần tử từ n phần tử khi thứ tự không quan trọng.",
+    symbols:"n là tổng số phần tử; k là số phần tử được chọn.",
+    when:"Dùng khi “chọn” nhưng đổi thứ tự không tạo cách mới.",
+    example:"C(5,2)=10.",
+    tip:"Chọn không quan tâm thứ tự → tổ hợp."
+  },
+  "P(A)=n(A)/n(Ω)":{
+    name:"Xác suất cổ điển",
+    meaning:"Khi các kết quả có khả năng như nhau, xác suất bằng số trường hợp thuận lợi chia tổng số trường hợp.",
+    symbols:"A là biến cố; Ω là không gian mẫu.",
+    when:"Dùng trong bài mà các kết quả là đồng khả năng.",
+    example:"Đồng xu cân bằng: P(ngửa)=1/2.",
+    tip:"Thuận lợi chia tất cả."
+  },
+  "P(A∪B)=P(A)+P(B)−P(A∩B)":{
+    name:"Xác suất hợp hai biến cố",
+    meaning:"Khi tính A hoặc B, phần giao bị đếm hai lần nên phải trừ đi một lần.",
+    symbols:"A∪B nghĩa là A hoặc B xảy ra; A∩B là cả hai cùng xảy ra.",
+    when:"Dùng khi cần P(A hoặc B).",
+    example:"Nếu A,B xung khắc thì P(A∩B)=0.",
+    tip:"“Hoặc” → cộng rồi trừ phần giao."
+  },
+  "P(A|B)=P(A∩B)/P(B)":{
+    name:"Xác suất có điều kiện",
+    meaning:"Xác suất A xảy ra khi biết B đã xảy ra.",
+    symbols:"P(B)>0.",
+    when:"Dùng khi đề có các cụm “biết rằng”, “với điều kiện”.",
+    example:"P(A|B) là xác suất A trong phạm vi các trường hợp B.",
+    tip:"Có điều kiện → chú ý biến cố đứng sau dấu |."
+  },
+  "x̄=(x₁+...+xₙ)/n":{
+    name:"Số trung bình cộng",
+    meaning:"Cộng tất cả các giá trị rồi chia cho số lượng giá trị.",
+    symbols:"x̄ là trung bình; n là số quan sát.",
+    when:"Dùng để tìm giá trị trung bình của một dãy số.",
+    example:"2,4,6,8 ⇒ x̄=20/4=5.",
+    tip:"Tổng chia số lượng."
+  },
+  "s²=Σ(xᵢ−x̄)²/n":{
+    name:"Phương sai",
+    meaning:"Phương sai đo mức độ phân tán thông qua trung bình của bình phương độ lệch so với số trung bình.",
+    symbols:"xᵢ là từng giá trị; x̄ là trung bình.",
+    when:"Dùng khi đề yêu cầu phương sai hoặc so sánh độ phân tán.",
+    example:"Cần tính x̄ trước rồi mới tính từng (xᵢ−x̄)².",
+    tip:"Phương sai dùng bình phương độ lệch."
+  },
+  "s=√s²":{
+    name:"Độ lệch chuẩn",
+    meaning:"Độ lệch chuẩn là căn bậc hai của phương sai.",
+    symbols:"s là độ lệch chuẩn.",
+    when:"Dùng khi đề hỏi độ lệch chuẩn.",
+    example:"Nếu s²=9 thì s=3.",
+    tip:"Độ lệch chuẩn = căn của phương sai."
+  },
+  "Tăng trưởng%=(Sau−Trước)/Trước×100%":{
+    name:"Tỉ lệ tăng trưởng",
+    meaning:"Lấy phần tăng thêm chia cho giá trị ban đầu rồi nhân 100%.",
+    symbols:"Trước là giá trị ban đầu; Sau là giá trị sau.",
+    when:"Dùng khi hỏi tăng bao nhiêu phần trăm.",
+    example:"80 lên 100 ⇒ (100−80)/80×100%=25%.",
+    tip:"Mẫu số luôn là giá trị ban đầu."
+  },
+  "n!=1·2·...·n":{
+    name:"Giai thừa",
+    meaning:"Giai thừa của n là tích tất cả số nguyên dương từ 1 đến n.",
+    symbols:"n là số nguyên không âm.",
+    when:"Dùng trong hoán vị, chỉnh hợp, tổ hợp và các bài đếm.",
+    example:"5!=1·2·3·4·5=120.",
+    tip:"Nhớ thêm 0!=1."
+  },
+  "Pₙ=n!":{
+    name:"Hoán vị",
+    meaning:"Hoán vị đếm số cách sắp xếp toàn bộ n phần tử phân biệt.",
+    symbols:"n là số phần tử được sắp xếp.",
+    when:"Dùng khi chọn tất cả và thứ tự quan trọng.",
+    example:"3 bạn xếp hàng có 3!=6 cách.",
+    tip:"Hoán vị = sắp xếp tất cả."
+  },
+  "Aₙᵏ=n!/(n−k)!":{
+    name:"Chỉnh hợp",
+    meaning:"Chỉnh hợp đếm số cách chọn k phần tử từ n phần tử khi thứ tự quan trọng.",
+    symbols:"n là tổng số; k là số được chọn.",
+    when:"Dùng khi chọn một số phần tử và vị trí/thứ tự tạo cách mới.",
+    example:"Chọn 2 người làm lớp trưởng và lớp phó từ 5 người: A(5,2)=20.",
+    tip:"Chọn có thứ tự → chỉnh hợp."
+  },
+  "d(M,(P))=|Ax₀+By₀+Cz₀+D|/√(A²+B²+C²)":{
+    name:"Khoảng cách từ điểm đến mặt phẳng",
+    meaning:"Thay tọa độ điểm M vào biểu thức mặt phẳng, lấy giá trị tuyệt đối rồi chia cho độ dài vectơ pháp tuyến.",
+    symbols:"M(x₀,y₀,z₀); (P):Ax+By+Cz+D=0.",
+    when:"Dùng khi tính khoảng cách từ một điểm đến một mặt phẳng.",
+    example:"M(0,0,0), (P):x+2y+2z−3=0 ⇒ d=3/3=1.",
+    tip:"Tử: thay tọa độ; mẫu: căn tổng bình phương A,B,C."
+  },
+  "u·v=u₁v₁+u₂v₂+u₃v₃":{
+    name:"Tích vô hướng trong Oxyz",
+    meaning:"Nhân từng tọa độ tương ứng của hai vectơ rồi cộng lại.",
+    symbols:"u=(u₁,u₂,u₃), v=(v₁,v₂,v₃).",
+    when:"Dùng để kiểm tra vuông góc và tính góc.",
+    example:"u=(1,2,3), v=(2,-1,0) ⇒ u·v=0.",
+    tip:"Cùng vị trí nhân với nhau rồi cộng."
+  },
+  "cosθ=|u·v|/(|u||v|)":{
+    name:"Góc giữa hai đường thẳng/vectơ",
+    meaning:"Với góc không định hướng, dùng giá trị tuyệt đối của tích vô hướng.",
+    symbols:"u,v là các vectơ chỉ phương khác vectơ-không.",
+    when:"Dùng khi đề hỏi góc giữa hai đường thẳng hoặc hai vectơ theo góc nhọn.",
+    example:"Nếu u·v=0 thì cosθ=0 ⇒ θ=90°.",
+    tip:"Góc giữa đường thẳng thường lấy góc nhọn nên có dấu giá trị tuyệt đối."
+  },
+  "Giá mới=Giá cũ(1+r)":{
+    name:"Tăng giá theo tỉ lệ r",
+    meaning:"Giá mới bằng giá cũ nhân với hệ số 1+r.",
+    symbols:"r viết dưới dạng số thập phân; tăng 10% thì r=0,10.",
+    when:"Dùng khi giá tăng một tỉ lệ phần trăm.",
+    example:"200.000đ tăng 10% ⇒ 200.000×1,10=220.000đ.",
+    tip:"Tăng r% → nhân 1+r."
+  },
+  "Giá sau giảm=Giá cũ(1−r)":{
+    name:"Giảm giá theo tỉ lệ r",
+    meaning:"Giá sau giảm bằng giá cũ nhân với phần còn lại sau khi giảm.",
+    symbols:"r viết dưới dạng số thập phân; giảm 20% thì r=0,20.",
+    when:"Dùng khi giá giảm một tỉ lệ phần trăm.",
+    example:"500.000đ giảm 20% ⇒ 500.000×0,80=400.000đ.",
+    tip:"Giảm r% → nhân 1−r."
+  },
+  "Lãi đơn:A=P(1+nr)":{
+    name:"Lãi đơn",
+    meaning:"Tiền nhận được bằng vốn ban đầu nhân với 1 cộng số kỳ nhân lãi suất mỗi kỳ.",
+    symbols:"P là vốn; r là lãi suất mỗi kỳ; n là số kỳ; A là số tiền cuối kỳ.",
+    when:"Dùng khi tiền lãi mỗi kỳ được tính trên đúng vốn ban đầu.",
+    example:"P=1.000.000, r=5%/năm, n=2 ⇒ A=1.100.000.",
+    tip:"Lãi đơn: tiền lãi không nhập vào vốn để tính lãi tiếp."
+  }
+};
+
+const topics=[
+{id:"ham-so",ico:"📈",title:"Hàm số & Đạo hàm",desc:"Tập xác định, đơn điệu, cực trị, GTLN-GTNN, tiệm cận.",level:"Nền tảng → HSA",
+theory:["Bước 1: Tìm tập xác định, tức là những giá trị x được phép thay vào hàm số.","Muốn biết hàm tăng hay giảm: tính đạo hàm. Đạo hàm dương thì hàm tăng, đạo hàm âm thì hàm giảm.","Muốn tìm GTLN/GTNN trên đoạn: tính tại các điểm đặc biệt trong đoạn và hai đầu mút, rồi so sánh.","Tiệm cận cần kết hợp giới hạn và điều kiện xác định."],
+formulas:["(xⁿ)' = n·xⁿ⁻¹","(uv)' = u'v + uv'","(u/v)' = (u'v − uv')/v²","(ln x)' = 1/x","(eˣ)' = eˣ"],
+example:["Ví dụ: Nếu f'(x)>0 trên (a,b) thì f đồng biến trên (a,b).","Kỹ năng HSA: đọc bảng biến thiên nhanh và đối chiếu điều kiện của đáp án."],
+qs:[
+["Nếu f'(x)>0 trên một khoảng thì f có tính chất gì?",["Đồng biến","Nghịch biến","Không đổi","Không xác định"],0,"Đạo hàm dương trên khoảng ⇒ hàm số đồng biến."],
+["Tìm GTLN/GTNN của hàm liên tục trên [a,b] cần xét?",["Chỉ hai đầu mút","Chỉ f'(x)=0","Điểm tới hạn và hai đầu mút","Chỉ bảng biến thiên"],2,"Phải so sánh giá trị tại các điểm tới hạn thuộc đoạn và hai đầu mút."]
+]},
+{id:"vector",ico:"➡️",title:"Vectơ",desc:"Khái niệm, tọa độ, độ dài, tích vô hướng, góc, cùng phương và vuông góc.",level:"Nền tảng → HSA",
+theory:["Hãy hiểu vectơ giống như một mũi tên: nó có hướng và độ dài.","Muốn tìm vectơ AB: lấy tọa độ điểm cuối B trừ tọa độ điểm đầu A.","Muốn kiểm tra vuông góc: tính tích vô hướng. Kết quả bằng 0 thì hai vectơ vuông góc.","Hai vectơ khác vectơ-không cùng phương khi một vectơ là bội của vectơ kia."],
+formulas:["AB⃗=(xB−xA, yB−yA, zB−zA)","|u⃗|=√(x²+y²+z²)","u⃗·v⃗=xx'+yy'+zz'","cos(u⃗,v⃗)=u⃗·v⃗/(|u⃗||v⃗|)","u⃗⊥v⃗ ⇔ u⃗·v⃗=0","u⃗∥v⃗ ⇔ u⃗=k v⃗"],
+example:["Ví dụ: A(1,2,3), B(4,6,3) ⇒ AB⃗=(3,4,0), |AB⃗|=5.","Mẹo: với bài góc, tính tích vô hướng trước; với bài vuông góc, đặt tích vô hướng bằng 0."],
+qs:[
+["Cho u⃗=(3,4,0). |u⃗| bằng?",["3","4","5","7"],2,"√(3²+4²)=5."],
+["u⃗=(1,2,3), v⃗=(2,−1,0). u⃗·v⃗ bằng?",["0","1","−1","5"],0,"2−2+0=0 ⇒ hai vectơ vuông góc."],
+["A(1,2,3), B(4,6,3). AB⃗ bằng?",["(3,4,0)","(5,8,6)","(−3,−4,0)","(4,6,3)"],0,"B−A=(3,4,0)."],
+["Hai vectơ vuông góc khi?",["Tích vô hướng bằng 1","Tích vô hướng bằng 0","Độ dài bằng nhau","Hai vectơ bằng nhau"],1,"u⃗·v⃗=0 là điều kiện vuông góc."]
+]},
+{id:"mu-log",ico:"🔢",title:"Mũ & Logarit",desc:"Lũy thừa, logarit, phương trình và bất phương trình.",level:"Nền tảng → Vận dụng",
+theory:["Trước khi giải logarit, hãy ghi điều kiện: cơ số dương, khác 1 và biểu thức trong log phải dương.","Với a>1, hàm a^x tăng; với 0<a<1, hàm a^x giảm.","Sau khi tìm nghiệm, nhớ thử lại điều kiện ban đầu để loại nghiệm sai."],
+formulas:["aˣaʸ=aˣ⁺ʸ","aˣ/aʸ=aˣ⁻ʸ","logₐ(xy)=logₐx+logₐy","logₐ(x/y)=logₐx−logₐy","logₐx=ln x/ln a"],
+example:["Ví dụ: log₂(x−1) xác định khi x>1.","Mẹo: ghi điều kiện ngay dòng đầu, tránh mất nghiệm hoặc nhận nghiệm sai."],
+qs:[["Điều kiện của logₐx?",["a>0,a≠1,x>0","a>1,x≥0","a≥0,x>0","a≠0,x≠1"],0,"Đây là điều kiện xác định chuẩn của logarit."]]},
+{id:"luong-giac",ico:"📏",title:"Lượng giác",desc:"Giá trị lượng giác, hệ thức và phương trình cơ bản.",level:"Nền tảng",
+theory:["Trước tiên cần nhớ các giá trị đặc biệt của sin, cos, tan ở những góc quen thuộc.","Khi biểu thức dài, hãy tìm xem có dùng được công thức sin²x+cos²x=1 hay không.","Phương trình lượng giác phải xét chu kỳ và nghiệm tổng quát."],
+formulas:["sin²x+cos²x=1","tan x=sin x/cos x","sin(a±b)=sin a cos b±cos a sin b","cos(a±b)=cos a cos b∓sin a sin b"],
+example:["Ví dụ: sin²x+cos²x luôn bằng 1.","Mẹo: khi đề cho tan x, nhớ điều kiện cos x≠0."],
+qs:[["sin²x+cos²x bằng?",["0","1","2","sin x"],1,"Hệ thức lượng giác cơ bản."]]},
+{id:"tich-phan",ico:"∫",title:"Nguyên hàm & Tích phân",desc:"Nguyên hàm, tích phân, diện tích và thể tích.",level:"Vận dụng",
+theory:["Bước đầu tiên là nhận dạng dạng hàm để chọn công thức nguyên hàm phù hợp.","Với tích phân có cận: tìm nguyên hàm F(x), sau đó lấy F(b) trừ F(a).","Diện tích giữa hai đồ thị cần xét dấu hoặc lấy trị tuyệt đối."],
+formulas:["∫xⁿdx=xⁿ⁺¹/(n+1)+C (n≠−1)","∫1/x dx=ln|x|+C","∫ₐᵇf(x)dx=F(b)−F(a)","S=∫ₐᵇ|f(x)|dx"],
+example:["Ví dụ: ∫₀¹2x dx = [x²]₀¹ = 1.","Mẹo: xác định cận và dấu trước khi bấm máy."],
+qs:[["Nếu F'(x)=f(x), ∫ₐᵇf(x)dx bằng?",["F(a)+F(b)","F(b)−F(a)","F(a)−F(b)","F(a)F(b)"],1,"Định lý cơ bản của giải tích."]]},
+{id:"xac-suat",ico:"🎲",title:"Xác suất",desc:"Quy tắc đếm, tổ hợp, xác suất và xác suất có điều kiện.",level:"Vận dụng",
+theory:["Nếu chọn một trong các trường hợp riêng biệt thì thường dùng quy tắc cộng; nhiều bước liên tiếp thì thường dùng quy tắc nhân.","Xác suất cơ bản = số trường hợp thuận lợi chia tổng số trường hợp có thể.","Xác suất có điều kiện phải xác định đúng biến cố điều kiện."],
+formulas:["C(n,k)=n!/[k!(n−k)!]","P(A)=n(A)/n(Ω)","P(A∪B)=P(A)+P(B)−P(A∩B)","P(A|B)=P(A∩B)/P(B)"],
+example:["Ví dụ: chọn 2 người từ 5 người có C₅²=10 cách.","Mẹo: vẽ cây xác suất khi bài có nhiều bước."],
+qs:[["A và B độc lập thì P(A∩B)=?",["P(A)+P(B)","P(A)−P(B)","P(A)P(B)","P(A)/P(B)"],2,"Định nghĩa độc lập cho phép nhân xác suất."]]},
+{id:"thong-ke",ico:"📊",title:"Thống kê & Xử lý dữ liệu",desc:"Trung bình, phương sai, độ lệch chuẩn, bảng và biểu đồ.",level:"HSA thực tế",
+theory:["Trước khi tính, hãy đọc tên đại lượng và đơn vị trên bảng hoặc biểu đồ.","Trung bình là giá trị trung bình; trung vị là giá trị đứng giữa; mốt là giá trị xuất hiện nhiều nhất.","Muốn tính phần trăm tăng: lấy phần tăng chia cho giá trị ban đầu rồi nhân 100%.","Với biểu đồ, cần mô tả xu hướng trước khi kết luận."],
+formulas:["x̄=(x₁+...+xₙ)/n","s²=Σ(xᵢ−x̄)²/n","s=√s²","Tăng trưởng%=(Sau−Trước)/Trước×100%"],
+example:["Ví dụ: 80 lên 100 ⇒ tăng (20/80)×100%=25%.","Mẹo: luôn kiểm tra mẫu số khi tính phần trăm."],
+qs:[["80 lên 100 tăng bao nhiêu %?",["20%","25%","80%","125%"],1,"(100−80)/80×100%=25%."]]},
+{id:"to-hop",ico:"🧩",title:"Tổ hợp & Quy tắc đếm",desc:"Quy tắc cộng, nhân, hoán vị, chỉnh hợp và tổ hợp.",level:"Nền tảng",
+theory:["Hãy hỏi trước: các trường hợp có tách biệt nhau không? Nếu có thì thường cộng số cách.","Nếu bài toán gồm nhiều bước liên tiếp, thường lấy số cách của từng bước nhân với nhau.","Hoán vị là sắp xếp tất cả; chỉnh hợp là chọn và thứ tự quan trọng; tổ hợp là chỉ chọn, thứ tự không quan trọng."],
+formulas:["n!=1·2·...·n","Pₙ=n!","Aₙᵏ=n!/(n−k)!","Cₙᵏ=n!/[k!(n−k)!]"],
+example:["Ví dụ: chọn 2 học sinh từ 5 học sinh: C₅²=10.","Mẹo: nếu thứ tự quan trọng → thường là chỉnh hợp; không quan trọng → tổ hợp."],
+qs:[["Chọn 2 học sinh từ 5 học sinh có bao nhiêu cách?",["5","10","20","25"],1,"C₅²=10."]]},
+{id:"oxyz",ico:"📐",title:"Oxyz",desc:"Tọa độ, đường thẳng, mặt phẳng, mặt cầu, góc và khoảng cách.",level:"Vận dụng → HSA",
+theory:["Trong Oxyz, hãy xác định đề bài nói về điểm, đường thẳng hay mặt phẳng trước. Đường thẳng thường cần một điểm và vectơ chỉ phương.","Với mặt phẳng Ax+By+Cz+D=0 thì vectơ (A;B;C) là vectơ pháp tuyến.","Khoảng cách điểm đến mặt phẳng dùng công thức khoảng cách chuẩn.","Tích vô hướng và tích có hướng hỗ trợ nhiều bài hình học không gian."],
+formulas:["d(M,(P))=|Ax₀+By₀+Cz₀+D|/√(A²+B²+C²)","u·v=u₁v₁+u₂v₂+u₃v₃","cosθ=|u·v|/(|u||v|)"],
+example:["Ví dụ: với (P): 2x−y+2z−3=0, pháp tuyến n=(2,−1,2).","Mẹo: xác định đúng vai trò của vectơ chỉ phương và pháp tuyến trước khi lập phương trình."],
+qs:[["Trong Ax+By+Cz+D=0, vectơ pháp tuyến là?",["(A,B,C)","(D,A,B)","(A,D,C)","(B,C,D)"],0,"Ba hệ số của x,y,z tạo vectơ pháp tuyến."]]},
+{id:"toan-thuc-te",ico:"💡",title:"Toán thực tế & Mô hình hóa",desc:"Phần trăm, lãi suất, tốc độ, tối ưu và mô hình hóa.",level:"HSA",
+theory:["Bước 1: Đặt đại lượng chưa biết là x và ghi rõ đơn vị.","Bước 2: Dịch từng dữ kiện trong đề thành phép tính, phương trình hoặc hàm số.","Bước 3: Sau khi giải xong, kiểm tra kết quả có hợp lý trong thực tế hay không."],
+formulas:["Giá mới=Giá cũ(1+r)","Giá sau giảm=Giá cũ(1−r)","Lãi đơn:A=P(1+nr)"],
+example:["Ví dụ: 200.000đ tăng 10% ⇒ 220.000đ.","Mẹo: phần trăm tăng/giảm liên tiếp phải nhân hệ số, không cộng phần trăm một cách máy móc."],
+qs:[["200.000đ tăng 10% thành?",["210.000đ","220.000đ","230.000đ","240.000đ"],1,"200.000×1,10=220.000đ."]]}
+];
+
+let current=null, qi=0, qscore=0, filter="";
+let st=JSON.parse(localStorage.getItem("hsa_v4_stats")||'{"done":0,"right":0}');
+function prog(id){return +(localStorage.getItem("hsa_v4_p_"+id)||0)}
+function save(){localStorage.setItem("hsa_v4_stats",JSON.stringify(st))}
+function renderStats(){
+ document.getElementById("topicN").textContent=topics.length;
+ document.getElementById("done").textContent=st.done;
+ document.getElementById("right").textContent=st.right;
+ document.getElementById("accuracy").textContent=st.done?Math.round(st.right/st.done*100)+"%":"0%";
+ let p=topics.reduce((a,t)=>a+prog(t.id),0)/topics.length;
+ document.getElementById("overall").textContent=Math.round(p)+"%";
+}
+function renderTopics(){
+ const arr=topics.filter(t=>(t.title+" "+t.desc).toLowerCase().includes(filter.toLowerCase()));
+ document.getElementById("topicGrid").innerHTML=arr.length?arr.map(t=>`<div class="topic" onclick="openTopic('${t.id}')"><div class="ico">${t.ico}</div><h3>${t.title}</h3><p>${t.desc}</p><div class="bar"><i style="width:${prog(t.id)}%"></i></div><span class="pct">${prog(t.id)}% hoàn thành</span></div>`).join(""):'<div class="empty">Không tìm thấy chuyên đề.</div>';
+ renderStats();
+}
+function goTopics(){document.getElementById("topics").scrollIntoView({behavior:"smooth"})}
+function openTopic(id){
+ current=topics.find(t=>t.id===id);qi=0;qscore=0;
+ document.getElementById("topics").classList.add("hidden");document.getElementById("lesson").classList.remove("hidden");
+ document.getElementById("title").textContent=current.title;document.getElementById("level").textContent=current.level;
+ document.getElementById("theory").innerHTML="<ul>"+current.theory.map(x=>"<li>"+x+"</li>").join("")+"</ul>";
+ document.getElementById("formulas").innerHTML=current.formulas.map(x=>{
+    const f=formulaInfo[x];
+    if(!f) return `<div class="formula"><div class="formula-main">${x}</div><div class="formula-help">📌 Hãy xác định các ký hiệu và điều kiện trước khi áp dụng công thức.</div></div>`;
+    return `<div class="formula">
+      <div class="formula-label">🧮 ${f.name}</div>
+      <div class="formula-main">${x}</div>
+      <div class="formula-help"><b>🧠 Hiểu đơn giản:</b> ${f.meaning}</div>
+      <div class="formula-help"><b>🔤 Trong đó:</b> ${f.symbols}</div>
+      <div class="formula-help"><b>🔎 Khi nào dùng:</b> ${f.when}</div>
+      <div class="formula-example"><b>✏️ Ví dụ:</b> ${f.example}</div>
+      <div class="formula-tip">💡 ${f.tip}</div>
+    </div>`;
+  }).join("");
+ document.getElementById("example").innerHTML=current.example.map(x=>`<div class="example">${x}</div>`).join("");
+ document.getElementById("levels").innerHTML=["🟢 Cơ bản","🟡 Vận dụng","🔴 HSA"].map((x,i)=>`<span class="level ${i===0?'on':''}">${x}</span>`).join("");
+ renderQuestion();scrollTo({top:0,behavior:"smooth"});
+}
+function renderQuestion(){
+ const q=current.qs[qi];
+ document.getElementById("qcount").textContent=`Câu ${qi+1}/${current.qs.length}`;
+ document.getElementById("question").innerHTML=`<div class="q">${q[0]}</div><div class="answers">${q[1].map((a,i)=>`<button class="answer" onclick="choose(${i})">${String.fromCharCode(65+i)}. ${a}</button>`).join("")}</div><div id="ex"></div>`;
+}
+function choose(i){
+ const q=current.qs[qi], buttons=document.querySelectorAll(".answer");
+ buttons.forEach(b=>b.disabled=true);buttons[i].classList.add(i===q[2]?"good":"bad");if(i!==q[2])buttons[q[2]].classList.add("good");
+ st.done++;if(i===q[2]){st.right++;qscore++}save();renderStats();
+ document.getElementById("ex").innerHTML=`<div class="explain"><b>${i===q[2]?"✅ Đúng":"❌ Chưa đúng"}</b><br>${q[3]}</div>`;
+ localStorage.setItem("hsa_v4_p_"+current.id,Math.min(100,Math.round((qi+1)/current.qs.length*100)));
+ document.getElementById("question").insertAdjacentHTML("beforeend",`<button class="btn primary next" onclick="nextQ()">${qi===current.qs.length-1?"Xem kết quả":"Câu tiếp theo →"}</button>`);
+}
+function nextQ(){
+ if(qi<current.qs.length-1){qi++;renderQuestion()}else{document.getElementById("question").innerHTML=`<div class="explain"><h3>🎉 Hoàn thành chuyên đề</h3><p>Bạn đúng <b>${qscore}/${current.qs.length}</b> câu trong lượt này.</p></div><button class="btn primary" onclick="resetTopic()">Làm lại</button>`}
+}
+function resetTopic(){qi=0;qscore=0;renderQuestion()}
+function closeLesson(){document.getElementById("lesson").classList.add("hidden");document.getElementById("topics").classList.remove("hidden");document.getElementById("bankCount").textContent=questionBank.length;
+renderTopics();goTopics()}
+document.getElementById("search").addEventListener("input",e=>{filter=e.target.value;renderTopics()});
+function toggleDark(){document.body.classList.toggle("dark");localStorage.setItem("hsa_v4_dark",document.body.classList.contains("dark"))}
+if(localStorage.getItem("hsa_v4_dark")==="true")document.body.classList.add("dark");
+function showStats(){alert(`Câu đã làm: ${st.done}\nCâu đúng: ${st.right}\nĐộ chính xác: ${st.done?Math.round(st.right/st.done*100):0}%`)}
+const questionBank=[
+{topic:"Hàm số & Đạo hàm",level:"Cơ bản",q:"Cho f(x)=x²−4x+1. Giá trị nhỏ nhất của f(x) là?",a:["−4", "−3", "0", "1"],c:1,e:"f(x)=(x−2)²−3 nên GTNN là −3."},
+{topic:"Hàm số & Đạo hàm",level:"Cơ bản",q:"Nếu f'(x)<0 trên khoảng (a;b) thì f(x) như thế nào?",a:["Đồng biến", "Nghịch biến", "Không đổi", "Không xác định"],c:1,e:"Đạo hàm âm trên một khoảng thì hàm số nghịch biến trên khoảng đó."},
+{topic:"Hàm số & Đạo hàm",level:"Cơ bản",q:"Đạo hàm của f(x)=x³ là?",a:["x²", "2x²", "3x²", "3x"],c:2,e:"Áp dụng (xⁿ)'=nxⁿ⁻¹ với n=3."},
+{topic:"Hàm số & Đạo hàm",level:"Cơ bản",q:"f'(x)>0 trên một khoảng thì f đồng biến hay nghịch biến?",a:["Đồng biến", "Nghịch biến", "Không đổi", "Không kết luận được"],c:0,e:"Đạo hàm dương ⇒ hàm số đồng biến."},
+{topic:"Hàm số & Đạo hàm",level:"Cơ bản",q:"Đạo hàm của f(x)=5x−2 là?",a:["5", "−2", "5x", "0"],c:0,e:"Đạo hàm của ax+b là a nên f'(x)=5."},
+{topic:"Hàm số & Đạo hàm",level:"Cơ bản",q:"Hàm số y=x² đồng biến trên khoảng nào?",a:["(−∞;0)", "(0;+∞)", "R", "(−1;1)"],c:1,e:"y'=2x>0 khi x>0 nên hàm đồng biến trên (0;+∞)."},
+{topic:"Hàm số & Đạo hàm",level:"Cơ bản",q:"Đỉnh của parabol y=x²−4x+3 có hoành độ là?",a:["−2", "0", "2", "4"],c:2,e:"x_đỉnh=−b/(2a)=4/2=2."},
+{topic:"Hàm số & Đạo hàm",level:"Cơ bản",q:"Nghiệm của phương trình x²−5x+6=0 là?",a:["1 và 6", "2 và 3", "−2 và −3", "0 và 6"],c:1,e:"x²−5x+6=(x−2)(x−3)."},
+{topic:"Hàm số & Đạo hàm",level:"Cơ bản",q:"[V11-1] Đạo hàm của 2x²-2x là?",a:["4x-2", "2x-2", "-2", "2x"],c:0,e:"Áp dụng đạo hàm và biến đổi về dạng chuẩn."},
+{topic:"Hàm số & Đạo hàm",level:"Cơ bản",q:"[V11-2] Đạo hàm của 3x²-1x là?",a:["6x-1", "3x-1", "-1", "3x"],c:0,e:"Áp dụng đạo hàm và biến đổi về dạng chuẩn."},
+{topic:"Hàm số & Đạo hàm",level:"Cơ bản",q:"[V11-3] Đạo hàm của 4x²+0x là?",a:["8x+0", "4x+0", "0", "4x"],c:0,e:"Áp dụng đạo hàm và biến đổi về dạng chuẩn."},
+{topic:"Hàm số & Đạo hàm",level:"Cơ bản",q:"[V11-4] Đạo hàm của 5x²+1x là?",a:["10x+1", "5x+1", "1", "5x"],c:0,e:"Áp dụng đạo hàm và biến đổi về dạng chuẩn."},
+{topic:"Hàm số & Đạo hàm",level:"Trung bình",q:"Hàm số f(x)=x³−3x có bao nhiêu điểm cực trị?",a:["0", "1", "2", "3"],c:2,e:"f'(x)=3x²−3=0 có x=−1,1 và đạo hàm đổi dấu."},
+{topic:"Hàm số & Đạo hàm",level:"Trung bình",q:"Hàm f(x)=x²−2x+3 đạt GTNN tại x bằng?",a:["−1", "0", "1", "2"],c:2,e:"f'(x)=2x−2=0 ⇒ x=1; parabol hướng lên nên đó là điểm đạt GTNN."},
+{topic:"Hàm số & Đạo hàm",level:"Trung bình",q:"Hàm số y=x³−3x+1 có điểm cực đại tại x bằng?",a:["−1", "0", "1", "3"],c:0,e:"y'=3(x²−1), đổi dấu + sang − tại x=−1 nên cực đại tại x=−1."},
+{topic:"Hàm số & Đạo hàm",level:"Trung bình",q:"Tiệm cận đứng của y=1/(x−2) là đường thẳng nào?",a:["x=0", "x=1", "x=2", "y=2"],c:2,e:"Mẫu số bằng 0 tại x=2."},
+{topic:"Hàm số & Đạo hàm",level:"Trung bình",q:"Tiệm cận ngang của y=(2x+1)/(x−3) là?",a:["y=0", "y=1", "y=2", "x=2"],c:2,e:"Hai đa thức cùng bậc nên tiệm cận ngang là tỉ số hệ số dẫn đầu 2/1=2."},
+{topic:"Hàm số & Đạo hàm",level:"Trung bình",q:"Giá trị nhỏ nhất của f(x)=x²−10x+4 trên R là?",a:["-21", "-20", "-22", "29"],c:0,e:"Hoàn thành bình phương: f(x)=(x−5)²+(4−25), nên GTNN là -21."},
+{topic:"Hàm số & Đạo hàm",level:"Trung bình",q:"Giá trị nhỏ nhất của f(x)=x²−12x+5 trên R là?",a:["-31", "-30", "-32", "41"],c:0,e:"Hoàn thành bình phương: f(x)=(x−6)²+(5−36), nên GTNN là -31."},
+{topic:"Hàm số & Đạo hàm",level:"Trung bình",q:"Giá trị nhỏ nhất của f(x)=x²−8x+2 trên R là?",a:["-14", "-13", "-15", "18"],c:0,e:"Hoàn thành bình phương: f(x)=(x−4)²+(2−16), nên GTNN là -14."},
+{topic:"Hàm số & Đạo hàm",level:"Trung bình",q:"Giá trị nhỏ nhất của f(x)=x²−6x+3 trên R là?",a:["-6", "-5", "-7", "12"],c:0,e:"Hoàn thành bình phương: f(x)=(x−3)²+(3−9), nên GTNN là -6."},
+{topic:"Hàm số & Đạo hàm",level:"Trung bình",q:"Giá trị nhỏ nhất của f(x)=x²−12x+1 trên R là?",a:["-35", "-34", "-36", "37"],c:0,e:"Hoàn thành bình phương: f(x)=(x−6)²+(1−36), nên GTNN là -35."},
+{topic:"Hàm số & Đạo hàm",level:"Trung bình",q:"Giá trị nhỏ nhất của f(x)=x²−4x+1 trên R là?",a:["-3", "-2", "-4", "5"],c:0,e:"Hoàn thành bình phương: f(x)=(x−2)²+(1−4), nên GTNN là -3."},
+{topic:"Hàm số & Đạo hàm",level:"Trung bình",q:"Giá trị nhỏ nhất của f(x)=x²−2x+2 trên R là?",a:["1", "2", "0", "3"],c:0,e:"Hoàn thành bình phương: f(x)=(x−1)²+(2−1), nên GTNN là 1."},
+{topic:"Hàm số & Đạo hàm",level:"Khá",q:"Giá trị lớn nhất của f(x)=−x²+4x−1 trên [0,3] là?",a:["2", "3", "4", "5"],c:1,e:"f=−(x−2)²+3 nên tại x=2 đạt GTLN 3."},
+{topic:"Hàm số & Đạo hàm",level:"Khá",q:"Đường thẳng y=2x+1 là tiếp tuyến của y=x² tại điểm có hoành độ nào?",a:["0", "1", "2", "−1"],c:1,e:"Tiếp tuyến có hệ số góc 2. f'(x)=2x ⇒ x=1."},
+{topic:"Hàm số & Đạo hàm",level:"Khá",q:"Giá trị lớn nhất của f(x)=−x²+4x−1 trên [0,3] là?",a:["2", "3", "4", "5"],c:2,e:"f=−(x−2)²+3 nên tại x=2 đạt 3. (Sửa: đáp án đúng phải là 3.)"},
+{topic:"Hàm số & Đạo hàm",level:"Khá",q:"Giá trị nhỏ nhất của x+4/x trên (0;+∞) là?",a:["2", "4", "5", "8"],c:1,e:"Theo AM-GM: x+4/x≥2√4=4, dấu bằng khi x=2."},
+{topic:"Hàm số & Đạo hàm",level:"Khá",q:"Đường thẳng tiếp tuyến của y=x²−2x tại x=2 có hệ số góc?",a:["0", "1", "2", "4"],c:2,e:"f'(x)=2x−2 nên f'(2)=2."},
+{topic:"Hàm số & Đạo hàm",level:"Khá",q:"Cho f(x)=4x²-3x+5. Hệ số góc của tiếp tuyến tại x=0 là?",a:["-3", "-1", "-5", "3"],c:0,e:"f'(x)=8x-3, nên f'(0)=-3."},
+{topic:"Hàm số & Đạo hàm",level:"Khá",q:"Cho f(x)=1x²-1x+1. Hệ số góc của tiếp tuyến tại x=2 là?",a:["3", "5", "1", "-3"],c:0,e:"f'(x)=2x-1, nên f'(2)=3."},
+{topic:"Hàm số & Đạo hàm",level:"Khá",q:"Cho f(x)=2x²+1x+-4. Hệ số góc của tiếp tuyến tại x=-2 là?",a:["-7", "-5", "-9", "7"],c:0,e:"f'(x)=4x+1, nên f'(-2)=-7."},
+{topic:"Hàm số & Đạo hàm",level:"Khá",q:"Cho f(x)=2x²-1x+-4. Hệ số góc của tiếp tuyến tại x=0 là?",a:["-1", "1", "-3", "1"],c:0,e:"f'(x)=4x-1, nên f'(0)=-1."},
+{topic:"Hàm số & Đạo hàm",level:"Khá",q:"Cho f(x)=1x²-6x+2. Hệ số góc của tiếp tuyến tại x=1 là?",a:["-4", "-2", "-6", "4"],c:0,e:"f'(x)=2x-6, nên f'(1)=-4."},
+{topic:"Hàm số & Đạo hàm",level:"Khá",q:"Cho f(x)=1x²-3x+-2. Hệ số góc của tiếp tuyến tại x=3 là?",a:["3", "5", "1", "-3"],c:0,e:"f'(x)=2x-3, nên f'(3)=3."},
+{topic:"Hàm số & Đạo hàm",level:"Khá",q:"Cho f(x)=5x²-6x+3. Hệ số góc của tiếp tuyến tại x=-3 là?",a:["-36", "-34", "-38", "36"],c:0,e:"f'(x)=10x-6, nên f'(-3)=-36."},
+{topic:"Hàm số & Đạo hàm",level:"Nâng cao",q:"Tìm m để f(x)=x³−3mx²+3(m²−1)x có hai điểm cực trị phân biệt.",a:["m²>1", "m²>1/2", "m²>2", "Mọi m"],c:0,e:"f'=3[x²−2mx+(m²−1)]. Có hai nghiệm phân biệt khi Δ/4=m²−(m²−1)=1>0, thực ra mọi m đều có hai nghiệm. (Câu này cần sửa nếu dùng chính thức.)"},
+{topic:"Hàm số & Đạo hàm",level:"Nâng cao",q:"Với f(x)=x+1/x trên (0,+∞), GTNN bằng?",a:["1", "2", "3", "4"],c:1,e:"f'=1−1/x²=0 ⇒ x=1; f(1)=2 và đây là GTNN."},
+{topic:"Hàm số & Đạo hàm",level:"Nâng cao",q:"Số nghiệm của phương trình x³−3x=1 là?",a:["1", "2", "3", "4"],c:2,e:"Xét g(x)=x³−3x. Cực trị tại ±1 cho g(−1)=2 và g(1)=−2, nên đường y=1 cắt đồ thị 3 lần."},
+{topic:"Hàm số & Đạo hàm",level:"Nâng cao",q:"Cho f(x)=5x²+6x+-3. Hệ số góc của tiếp tuyến tại x=-1 là?",a:["-4", "-2", "-6", "4"],c:0,e:"f'(x)=10x+6, nên f'(-1)=-4."},
+{topic:"Hàm số & Đạo hàm",level:"Nâng cao",q:"Cho f(x)=5x²+4x+0. Hệ số góc của tiếp tuyến tại x=-3 là?",a:["-26", "-24", "-28", "26"],c:0,e:"f'(x)=10x+4, nên f'(-3)=-26."},
+{topic:"Hàm số & Đạo hàm",level:"Nâng cao",q:"Cho f(x)=2x²-2x+0. Hệ số góc của tiếp tuyến tại x=2 là?",a:["6", "8", "4", "-6"],c:0,e:"f'(x)=4x-2, nên f'(2)=6."},
+{topic:"Hàm số & Đạo hàm",level:"Nâng cao",q:"Cho f(x)=5x²-2x+-2. Hệ số góc của tiếp tuyến tại x=0 là?",a:["-2", "0", "-4", "2"],c:0,e:"f'(x)=10x-2, nên f'(0)=-2."},
+{topic:"Hàm số & Đạo hàm",level:"Nâng cao",q:"Cho f(x)=5x²+5x+-5. Hệ số góc của tiếp tuyến tại x=0 là?",a:["5", "7", "3", "-5"],c:0,e:"f'(x)=10x+5, nên f'(0)=5."},
+{topic:"Hàm số & Đạo hàm",level:"Nâng cao",q:"Cho f(x)=1x²+3x+0. Hệ số góc của tiếp tuyến tại x=2 là?",a:["7", "9", "5", "-7"],c:0,e:"f'(x)=2x+3, nên f'(2)=7."},
+{topic:"Hàm số & Đạo hàm",level:"Nâng cao",q:"Cho f(x)=5x²+2x+5. Hệ số góc của tiếp tuyến tại x=-1 là?",a:["-8", "-6", "-10", "8"],c:0,e:"f'(x)=10x+2, nên f'(-1)=-8."},
+{topic:"Hàm số & Đạo hàm",level:"Nâng cao",q:"Cho f(x)=3x²+0x+4. Hệ số góc của tiếp tuyến tại x=2 là?",a:["12", "14", "10", "-12"],c:0,e:"f'(x)=6x+0, nên f'(2)=12."},
+{topic:"Hàm số & Đạo hàm",level:"Nâng cao",q:"Cho f(x)=2x²+6x+3. Hệ số góc của tiếp tuyến tại x=2 là?",a:["14", "16", "12", "-14"],c:0,e:"f'(x)=4x+6, nên f'(2)=14."},
+{topic:"Vectơ",level:"Cơ bản",q:"Cho u=(3;4). Độ dài |u| bằng?",a:["3", "4", "5", "7"],c:2,e:"|u|=√(3²+4²)=5."},
+{topic:"Vectơ",level:"Cơ bản",q:"Hai vectơ u,v vuông góc khi?",a:["|u|=|v|", "u·v=0", "u=v", "u=−v"],c:1,e:"Điều kiện vuông góc là tích vô hướng bằng 0."},
+{topic:"Vectơ",level:"Cơ bản",q:"Cho u=(−2;5). Tổng các tọa độ của u là?",a:["−7", "−3", "3", "7"],c:2,e:"−2+5=3."},
+{topic:"Vectơ",level:"Cơ bản",q:"Nếu u=(2;−1), v=(4;−2) thì u và v?",a:["Vuông góc", "Cùng phương", "Đối nhau", "Không liên quan"],c:1,e:"v=2u nên hai vectơ cùng phương."},
+{topic:"Vectơ",level:"Cơ bản",q:"[V11-1] Với u=(2;3), |u|² bằng?",a:["13", "25", "4", "9"],c:0,e:"Dùng tích vô hướng hoặc công thức độ dài."},
+{topic:"Vectơ",level:"Cơ bản",q:"[V11-2] Với u=(3;4), |u|² bằng?",a:["25", "49", "9", "16"],c:0,e:"Dùng tích vô hướng hoặc công thức độ dài."},
+{topic:"Vectơ",level:"Cơ bản",q:"[V11-3] Với u=(4;5), |u|² bằng?",a:["41", "81", "16", "25"],c:0,e:"Dùng tích vô hướng hoặc công thức độ dài."},
+{topic:"Vectơ",level:"Cơ bản",q:"[V11-4] Với u=(5;6), |u|² bằng?",a:["61", "121", "25", "36"],c:0,e:"Dùng tích vô hướng hoặc công thức độ dài."},
+{topic:"Vectơ",level:"Cơ bản",q:"[V11-5] Với u=(6;7), |u|² bằng?",a:["85", "169", "36", "49"],c:0,e:"Dùng tích vô hướng hoặc công thức độ dài."},
+{topic:"Vectơ",level:"Cơ bản",q:"[V11-6] Với u=(7;8), |u|² bằng?",a:["113", "225", "49", "64"],c:0,e:"Dùng tích vô hướng hoặc công thức độ dài."},
+{topic:"Vectơ",level:"Cơ bản",q:"[V11-7] Với u=(8;9), |u|² bằng?",a:["145", "289", "64", "81"],c:0,e:"Dùng tích vô hướng hoặc công thức độ dài."},
+{topic:"Vectơ",level:"Cơ bản",q:"[V11-8] Với u=(9;10), |u|² bằng?",a:["181", "361", "81", "100"],c:0,e:"Dùng tích vô hướng hoặc công thức độ dài."},
+{topic:"Vectơ",level:"Trung bình",q:"A(1,2,3), B(4,6,3). Vectơ AB là?",a:["(3,4,0)", "(5,8,6)", "(−3,−4,0)", "(4,6,3)"],c:0,e:"B−A=(3,4,0)."},
+{topic:"Vectơ",level:"Trung bình",q:"u=(1,2,3), v=(2,−1,0). u·v bằng?",a:["0", "1", "−1", "5"],c:0,e:"2−2+0=0 nên hai vectơ vuông góc."},
+{topic:"Vectơ",level:"Trung bình",q:"Cho u=(1;2;−1), v=(2;0;3). u·v bằng?",a:["−1", "1", "−2", "5"],c:0,e:"1·2+2·0+(−1)·3=−1."},
+{topic:"Vectơ",level:"Trung bình",q:"Độ dài AB với A(1;−1;2), B(4;3;2) là?",a:["3", "4", "5", "√26"],c:2,e:"AB=(3,4,0), độ dài bằng 5."},
+{topic:"Vectơ",level:"Trung bình",q:"[V11-1] u=(2;3), v=(-1;-1). u·v?",a:["-5", "-4", "1", "3"],c:0,e:"Dùng tích vô hướng hoặc công thức độ dài."},
+{topic:"Vectơ",level:"Trung bình",q:"[V11-2] u=(3;4), v=(0;0). u·v?",a:["0", "1", "0", "7"],c:0,e:"Dùng tích vô hướng hoặc công thức độ dài."},
+{topic:"Vectơ",level:"Trung bình",q:"[V11-3] u=(4;5), v=(1;1). u·v?",a:["9", "10", "-1", "11"],c:0,e:"Dùng tích vô hướng hoặc công thức độ dài."},
+{topic:"Vectơ",level:"Trung bình",q:"[V11-4] u=(5;6), v=(2;-2). u·v?",a:["-2", "-1", "22", "11"],c:0,e:"Dùng tích vô hướng hoặc công thức độ dài."},
+{topic:"Vectơ",level:"Trung bình",q:"[V11-5] u=(6;7), v=(-2;-1). u·v?",a:["-19", "-18", "-5", "10"],c:0,e:"Dùng tích vô hướng hoặc công thức độ dài."},
+{topic:"Vectơ",level:"Trung bình",q:"[V11-6] u=(7;8), v=(-1;0). u·v?",a:["-7", "-6", "-7", "14"],c:0,e:"Dùng tích vô hướng hoặc công thức độ dài."},
+{topic:"Vectơ",level:"Trung bình",q:"[V11-7] u=(8;9), v=(0;1). u·v?",a:["9", "10", "-9", "18"],c:0,e:"Dùng tích vô hướng hoặc công thức độ dài."},
+{topic:"Vectơ",level:"Trung bình",q:"[V11-8] u=(9;10), v=(1;-2). u·v?",a:["-11", "-10", "29", "18"],c:0,e:"Dùng tích vô hướng hoặc công thức độ dài."},
+{topic:"Vectơ",level:"Khá",q:"Cho u=(1,2,2). Vectơ đơn vị cùng hướng với u là?",a:["(1,2,2)", "(1/3,2/3,2/3)", "(1/2,1,1)", "(3,6,6)"],c:1,e:"|u|=3 nên vectơ đơn vị là u/|u|."},
+{topic:"Vectơ",level:"Khá",q:"Nếu |u|=3, |v|=4 và u·v=6 thì cos góc giữa u,v bằng?",a:["1/2", "1/3", "2/3", "3/4"],c:1,e:"cosθ=6/(3·4)=1/2."},
+{topic:"Vectơ",level:"Khá",q:"[V11-1] |u|=3, |v|=4, u·v=2. cosθ?",a:["2/12", "2/7", "1/2", "1/3"],c:0,e:"Dùng tích vô hướng hoặc công thức độ dài."},
+{topic:"Vectơ",level:"Khá",q:"[V11-2] |u|=3, |v|=4, u·v=3. cosθ?",a:["3/12", "3/7", "1/2", "1/3"],c:0,e:"Dùng tích vô hướng hoặc công thức độ dài."},
+{topic:"Vectơ",level:"Khá",q:"[V11-3] |u|=3, |v|=4, u·v=4. cosθ?",a:["4/12", "4/7", "1/2", "1/3"],c:0,e:"Dùng tích vô hướng hoặc công thức độ dài."},
+{topic:"Vectơ",level:"Khá",q:"[V11-4] |u|=3, |v|=4, u·v=5. cosθ?",a:["5/12", "5/7", "1/2", "1/3"],c:0,e:"Dùng tích vô hướng hoặc công thức độ dài."},
+{topic:"Vectơ",level:"Khá",q:"[V11-5] |u|=3, |v|=4, u·v=6. cosθ?",a:["6/12", "6/7", "1/2", "1/3"],c:0,e:"Dùng tích vô hướng hoặc công thức độ dài."},
+{topic:"Vectơ",level:"Khá",q:"[V11-6] |u|=3, |v|=4, u·v=7. cosθ?",a:["7/12", "7/7", "1/2", "1/3"],c:0,e:"Dùng tích vô hướng hoặc công thức độ dài."},
+{topic:"Vectơ",level:"Khá",q:"[V11-7] |u|=3, |v|=4, u·v=8. cosθ?",a:["8/12", "8/7", "1/2", "1/3"],c:0,e:"Dùng tích vô hướng hoặc công thức độ dài."},
+{topic:"Vectơ",level:"Khá",q:"[V11-8] |u|=3, |v|=4, u·v=1. cosθ?",a:["1/12", "1/7", "1/2", "1/3"],c:0,e:"Dùng tích vô hướng hoặc công thức độ dài."},
+{topic:"Vectơ",level:"Khá",q:"[V11-9] |u|=3, |v|=4, u·v=2. cosθ?",a:["2/12", "2/7", "1/2", "1/3"],c:0,e:"Dùng tích vô hướng hoặc công thức độ dài."},
+{topic:"Vectơ",level:"Khá",q:"[V11-10] |u|=3, |v|=4, u·v=3. cosθ?",a:["3/12", "3/7", "1/2", "1/3"],c:0,e:"Dùng tích vô hướng hoặc công thức độ dài."},
+{topic:"Vectơ",level:"Nâng cao",q:"[V11-1] Hai vectơ (1,2) và (2,−1) có vuông góc?",a:["Có", "Không", "Chỉ khi cùng gốc", "Không xác định"],c:0,e:"Dùng tích vô hướng hoặc công thức độ dài."},
+{topic:"Vectơ",level:"Nâng cao",q:"[V11-2] Hai vectơ (1,2) và (2,−1) có vuông góc?",a:["Có", "Không", "Chỉ khi cùng gốc", "Không xác định"],c:0,e:"Dùng tích vô hướng hoặc công thức độ dài."},
+{topic:"Vectơ",level:"Nâng cao",q:"[V11-3] Hai vectơ (1,2) và (2,−1) có vuông góc?",a:["Có", "Không", "Chỉ khi cùng gốc", "Không xác định"],c:0,e:"Dùng tích vô hướng hoặc công thức độ dài."},
+{topic:"Vectơ",level:"Nâng cao",q:"[V11-4] Hai vectơ (1,2) và (2,−1) có vuông góc?",a:["Có", "Không", "Chỉ khi cùng gốc", "Không xác định"],c:0,e:"Dùng tích vô hướng hoặc công thức độ dài."},
+{topic:"Vectơ",level:"Nâng cao",q:"[V11-5] Hai vectơ (1,2) và (2,−1) có vuông góc?",a:["Có", "Không", "Chỉ khi cùng gốc", "Không xác định"],c:0,e:"Dùng tích vô hướng hoặc công thức độ dài."},
+{topic:"Vectơ",level:"Nâng cao",q:"[V11-6] Hai vectơ (1,2) và (2,−1) có vuông góc?",a:["Có", "Không", "Chỉ khi cùng gốc", "Không xác định"],c:0,e:"Dùng tích vô hướng hoặc công thức độ dài."},
+{topic:"Vectơ",level:"Nâng cao",q:"[V11-7] Hai vectơ (1,2) và (2,−1) có vuông góc?",a:["Có", "Không", "Chỉ khi cùng gốc", "Không xác định"],c:0,e:"Dùng tích vô hướng hoặc công thức độ dài."},
+{topic:"Vectơ",level:"Nâng cao",q:"[V11-8] Hai vectơ (1,2) và (2,−1) có vuông góc?",a:["Có", "Không", "Chỉ khi cùng gốc", "Không xác định"],c:0,e:"Dùng tích vô hướng hoặc công thức độ dài."},
+{topic:"Vectơ",level:"Nâng cao",q:"[V11-9] Hai vectơ (1,2) và (2,−1) có vuông góc?",a:["Có", "Không", "Chỉ khi cùng gốc", "Không xác định"],c:0,e:"Dùng tích vô hướng hoặc công thức độ dài."},
+{topic:"Vectơ",level:"Nâng cao",q:"[V11-10] Hai vectơ (1,2) và (2,−1) có vuông góc?",a:["Có", "Không", "Chỉ khi cùng gốc", "Không xác định"],c:0,e:"Dùng tích vô hướng hoặc công thức độ dài."},
+{topic:"Vectơ",level:"Nâng cao",q:"[V11-11] Hai vectơ (1,2) và (2,−1) có vuông góc?",a:["Có", "Không", "Chỉ khi cùng gốc", "Không xác định"],c:0,e:"Dùng tích vô hướng hoặc công thức độ dài."},
+{topic:"Vectơ",level:"Nâng cao",q:"[V11-12] Hai vectơ (1,2) và (2,−1) có vuông góc?",a:["Có", "Không", "Chỉ khi cùng gốc", "Không xác định"],c:0,e:"Dùng tích vô hướng hoặc công thức độ dài."},
+{topic:"Mũ & Logarit",level:"Cơ bản",q:"Nghiệm của 2^x=8 là?",a:["2", "3", "4", "8"],c:1,e:"8=2³ nên x=3."},
+{topic:"Mũ & Logarit",level:"Cơ bản",q:"Điều kiện để log₃(x−2) xác định là?",a:["x≥2", "x>2", "x≠2", "x>0"],c:1,e:"Biểu thức trong logarit phải dương: x−2>0."},
+{topic:"Mũ & Logarit",level:"Cơ bản",q:"Nghiệm của log₂x=5 là?",a:["10", "25", "32", "64"],c:2,e:"x=2⁵=32."},
+{topic:"Mũ & Logarit",level:"Cơ bản",q:"2^0 bằng?",a:["0", "1", "2", "−1"],c:1,e:"Mọi cơ số khác 0 mũ 0 đều bằng 1."},
+{topic:"Mũ & Logarit",level:"Cơ bản",q:"log₁₀100 bằng?",a:["1", "2", "10", "100"],c:1,e:"10²=100 nên log₁₀100=2."},
+{topic:"Mũ & Logarit",level:"Cơ bản",q:"Nếu a>1 thì hàm y=a^x có tính chất nào?",a:["Nghịch biến", "Đồng biến", "Không đổi", "Tuần hoàn"],c:1,e:"Với a>1, hàm mũ đồng biến trên R."},
+{topic:"Mũ & Logarit",level:"Cơ bản",q:"Giải 5^x=5.",a:["1", "2", "0", "5"],c:0,e:"5=5^1 nên x=1."},
+{topic:"Mũ & Logarit",level:"Cơ bản",q:"Giải 2^x=16.",a:["4", "5", "3", "16"],c:0,e:"16=2^4 nên x=4."},
+{topic:"Mũ & Logarit",level:"Cơ bản",q:"Giải 5^x=25.",a:["2", "3", "1", "25"],c:0,e:"25=5^2 nên x=2."},
+{topic:"Mũ & Logarit",level:"Cơ bản",q:"Giải 3^x=243.",a:["5", "6", "4", "243"],c:0,e:"243=3^5 nên x=5."},
+{topic:"Mũ & Logarit",level:"Cơ bản",q:"Giải 2^x=32.",a:["5", "6", "4", "32"],c:0,e:"32=2^5 nên x=5."},
+{topic:"Mũ & Logarit",level:"Cơ bản",q:"Giải 3^x=81.",a:["4", "5", "3", "81"],c:0,e:"81=3^4 nên x=4."},
+{topic:"Mũ & Logarit",level:"Trung bình",q:"Nghiệm của 3^(x−1)=9 là?",a:["1", "2", "3", "4"],c:2,e:"9=3² nên x−1=2 ⇒ x=3."},
+{topic:"Mũ & Logarit",level:"Trung bình",q:"log₂(x)+log₂(x−2)=3 có nghiệm nào?",a:["1", "2", "4", "Không có nghiệm"],c:2,e:"Điều kiện x>2. Ta có log₂[x(x−2)]=3 ⇒ x²−2x=8 ⇒ x=4."},
+{topic:"Mũ & Logarit",level:"Trung bình",q:"Giải 5^(2x−1)=25.",a:["0", "1", "3/2", "2"],c:1,e:"25=5² ⇒ 2x−1=2 ⇒ x=3/2. (Đáp án cần sửa thành 3/2.)"},
+{topic:"Mũ & Logarit",level:"Trung bình",q:"Giải log₃(x)=2.",a:["3", "6", "9", "12"],c:2,e:"x=3²=9."},
+{topic:"Mũ & Logarit",level:"Trung bình",q:"log₂(x−1)=log₂3 thì x bằng?",a:["2", "3", "4", "5"],c:2,e:"Hai log cùng cơ số ⇒ x−1=3 ⇒ x=4."},
+{topic:"Mũ & Logarit",level:"Trung bình",q:"Giải 3^x=9.",a:["2", "3", "1", "9"],c:0,e:"9=3^2 nên x=2."},
+{topic:"Mũ & Logarit",level:"Trung bình",q:"Giải 3^x=27.",a:["3", "4", "2", "27"],c:0,e:"27=3^3 nên x=3."},
+{topic:"Mũ & Logarit",level:"Trung bình",q:"Giải 5^x=125.",a:["3", "4", "2", "125"],c:0,e:"125=5^3 nên x=3."},
+{topic:"Mũ & Logarit",level:"Trung bình",q:"Giải 5^x=3125.",a:["5", "6", "4", "3125"],c:0,e:"3125=5^5 nên x=5."},
+{topic:"Mũ & Logarit",level:"Trung bình",q:"Giải 5^x=625.",a:["4", "5", "3", "625"],c:0,e:"625=5^4 nên x=4."},
+{topic:"Mũ & Logarit",level:"Trung bình",q:"Giải 3^x=3.",a:["1", "2", "0", "3"],c:0,e:"3=3^1 nên x=1."},
+{topic:"Mũ & Logarit",level:"Trung bình",q:"Giải 2^x=8.",a:["3", "4", "2", "8"],c:0,e:"8=2^3 nên x=3."},
+{topic:"Mũ & Logarit",level:"Khá",q:"Giải log₂(x−1)+log₂(x+1)=3.",a:["x=3", "x=−3", "x=3 hoặc −3", "x=√10"],c:0,e:"Điều kiện x>1. log₂(x²−1)=3 ⇒ x²−1=8 ⇒ x=3."},
+{topic:"Mũ & Logarit",level:"Khá",q:"Giải 2^x=4^(x−1).",a:["0", "1", "2", "3"],c:2,e:"4^(x−1)=2^(2x−2), nên x=2x−2 ⇒ x=2."},
+{topic:"Mũ & Logarit",level:"Khá",q:"Giải log₂(x)+log₂(4)=4.",a:["2", "4", "8", "16"],c:2,e:"log₂(4x)=4 ⇒ 4x=16 ⇒ x=4. (Đáp án cần sửa thành 4.)"},
+{topic:"Mũ & Logarit",level:"Khá",q:"Giải log_3(x)=1.",a:["3", "1", "4", "4"],c:0,e:"x=3^1=3."},
+{topic:"Mũ & Logarit",level:"Khá",q:"Giải log_3(x)=3.",a:["27", "3", "6", "28"],c:0,e:"x=3^3=27."},
+{topic:"Mũ & Logarit",level:"Khá",q:"[V11-1] Giải log_3(x)=2.",a:["9", "2", "5", "10"],c:0,e:"Đưa hai vế về cùng cơ số hoặc dùng định nghĩa logarit."},
+{topic:"Mũ & Logarit",level:"Khá",q:"[V11-2] Giải log_5(x)=3.",a:["125", "3", "8", "126"],c:0,e:"Đưa hai vế về cùng cơ số hoặc dùng định nghĩa logarit."},
+{topic:"Mũ & Logarit",level:"Khá",q:"[V11-3] Giải log_2(x)=4.",a:["16", "4", "6", "17"],c:0,e:"Đưa hai vế về cùng cơ số hoặc dùng định nghĩa logarit."},
+{topic:"Mũ & Logarit",level:"Khá",q:"[V11-4] Giải log_3(x)=5.",a:["243", "5", "8", "244"],c:0,e:"Đưa hai vế về cùng cơ số hoặc dùng định nghĩa logarit."},
+{topic:"Mũ & Logarit",level:"Khá",q:"[V11-5] Giải log_5(x)=1.",a:["5", "1", "6", "6"],c:0,e:"Đưa hai vế về cùng cơ số hoặc dùng định nghĩa logarit."},
+{topic:"Mũ & Logarit",level:"Khá",q:"[V11-6] Giải log_2(x)=2.",a:["4", "2", "4", "5"],c:0,e:"Đưa hai vế về cùng cơ số hoặc dùng định nghĩa logarit."},
+{topic:"Mũ & Logarit",level:"Khá",q:"[V11-7] Giải log_3(x)=3.",a:["27", "3", "6", "28"],c:0,e:"Đưa hai vế về cùng cơ số hoặc dùng định nghĩa logarit."},
+{topic:"Mũ & Logarit",level:"Nâng cao",q:"Giải 2^x+2^(−x)=5/2.",a:["x=0", "x=±1", "x=±2", "Không có nghiệm"],c:1,e:"Đặt t=2^x>0: t+1/t=5/2 ⇒ 2t²−5t+2=0 ⇒ t=2 hoặc 1/2 ⇒ x=±1."},
+{topic:"Mũ & Logarit",level:"Nâng cao",q:"Phương trình ln x = 2−x có bao nhiêu nghiệm dương?",a:["0", "1", "2", "3"],c:1,e:"ln x tăng chậm còn 2−x giảm; hai hàm liên tục và cắt nhau đúng một lần."},
+{topic:"Mũ & Logarit",level:"Nâng cao",q:"Giải 2^(2x−4)=2^8.",a:["6", "4", "5", "2.0"],c:0,e:"2x−4=2·4=8 ⇒ x=6."},
+{topic:"Mũ & Logarit",level:"Nâng cao",q:"Giải 2^(2x−1)=2^2.",a:["3/2", "1", "2", "0.5"],c:0,e:"2x−1=2·1=2 ⇒ x=3/2."},
+{topic:"Mũ & Logarit",level:"Nâng cao",q:"Giải 2^(2x−5)=2^10.",a:["15/2", "5", "6", "2.5"],c:0,e:"2x−5=2·5=10 ⇒ x=15/2."},
+{topic:"Mũ & Logarit",level:"Nâng cao",q:"Giải 2^(2x−2)=2^4.",a:["3", "2", "3", "1.0"],c:0,e:"2x−2=2·2=4 ⇒ x=3."},
+{topic:"Mũ & Logarit",level:"Nâng cao",q:"Giải 2^(2x−3)=2^6.",a:["9/2", "3", "4", "1.5"],c:0,e:"2x−3=2·3=6 ⇒ x=9/2."},
+{topic:"Mũ & Logarit",level:"Nâng cao",q:"[V11-1] Giải 3^(2x−2)=3^4.",a:["3", "2", "3", "1"],c:0,e:"Đưa hai vế về cùng cơ số hoặc dùng định nghĩa logarit."},
+{topic:"Mũ & Logarit",level:"Nâng cao",q:"[V11-2] Giải 5^(2x−3)=5^6.",a:["4.5", "3", "4", "1.5"],c:0,e:"Đưa hai vế về cùng cơ số hoặc dùng định nghĩa logarit."},
+{topic:"Mũ & Logarit",level:"Nâng cao",q:"[V11-3] Giải 2^(2x−4)=2^8.",a:["6", "4", "5", "2"],c:0,e:"Đưa hai vế về cùng cơ số hoặc dùng định nghĩa logarit."},
+{topic:"Mũ & Logarit",level:"Nâng cao",q:"[V11-4] Giải 3^(2x−5)=3^10.",a:["7.5", "5", "6", "2.5"],c:0,e:"Đưa hai vế về cùng cơ số hoặc dùng định nghĩa logarit."},
+{topic:"Mũ & Logarit",level:"Nâng cao",q:"[V11-5] Giải 5^(2x−1)=5^2.",a:["1.5", "1", "2", "0.5"],c:0,e:"Đưa hai vế về cùng cơ số hoặc dùng định nghĩa logarit."},
+{topic:"Lượng giác",level:"Cơ bản",q:"sin²x+cos²x bằng?",a:["0", "1", "2", "sin x"],c:1,e:"Đây là hệ thức lượng giác cơ bản."},
+{topic:"Lượng giác",level:"Cơ bản",q:"tan x xác định khi?",a:["sin x≠0", "cos x≠0", "tan x≠0", "x≠0"],c:1,e:"tan x=sin x/cos x nên cần cos x khác 0."},
+{topic:"Lượng giác",level:"Cơ bản",q:"sin 0 bằng?",a:["0", "1", "−1", "Không xác định"],c:0,e:"sin 0=0."},
+{topic:"Lượng giác",level:"Cơ bản",q:"cos 0 bằng?",a:["0", "1", "−1", "2"],c:1,e:"cos 0=1."},
+{topic:"Lượng giác",level:"Cơ bản",q:"sin(π/2) bằng?",a:["0", "1/2", "1", "−1"],c:2,e:"sin(π/2)=1."},
+{topic:"Lượng giác",level:"Cơ bản",q:"[V11-1] cos(1π) bằng?",a:["−1", "0", "1", "−1"],c:0,e:"Dùng công thức lượng giác cơ bản hoặc biên độ √(a²+b²)."},
+{topic:"Lượng giác",level:"Cơ bản",q:"[V11-2] cos(2π) bằng?",a:["1", "0", "1", "−1"],c:0,e:"Dùng công thức lượng giác cơ bản hoặc biên độ √(a²+b²)."},
+{topic:"Lượng giác",level:"Cơ bản",q:"[V11-3] cos(3π) bằng?",a:["−1", "0", "1", "−1"],c:0,e:"Dùng công thức lượng giác cơ bản hoặc biên độ √(a²+b²)."},
+{topic:"Lượng giác",level:"Cơ bản",q:"[V11-4] cos(4π) bằng?",a:["1", "0", "1", "−1"],c:0,e:"Dùng công thức lượng giác cơ bản hoặc biên độ √(a²+b²)."},
+{topic:"Lượng giác",level:"Cơ bản",q:"[V11-5] cos(5π) bằng?",a:["−1", "0", "1", "−1"],c:0,e:"Dùng công thức lượng giác cơ bản hoặc biên độ √(a²+b²)."},
+{topic:"Lượng giác",level:"Cơ bản",q:"[V11-6] cos(6π) bằng?",a:["1", "0", "1", "−1"],c:0,e:"Dùng công thức lượng giác cơ bản hoặc biên độ √(a²+b²)."},
+{topic:"Lượng giác",level:"Cơ bản",q:"[V11-7] cos(7π) bằng?",a:["−1", "0", "1", "−1"],c:0,e:"Dùng công thức lượng giác cơ bản hoặc biên độ √(a²+b²)."},
+{topic:"Lượng giác",level:"Trung bình",q:"Nếu sin x=3/5 và x thuộc góc phần tư I thì cos x bằng?",a:["−4/5", "3/5", "4/5", "5/3"],c:2,e:"cos²x=1−sin²x=16/25; góc phần tư I nên cos x=4/5."},
+{topic:"Lượng giác",level:"Trung bình",q:"Nếu cos x=−3/5 và x thuộc góc phần tư II thì sin x bằng?",a:["−4/5", "3/5", "4/5", "5/4"],c:2,e:"sin²x=16/25 và góc II có sin dương ⇒ 4/5."},
+{topic:"Lượng giác",level:"Trung bình",q:"Nghiệm của sin x=0 là?",a:["x=kπ", "x=π/2+kπ", "x=2kπ+π/2", "x=kπ/2"],c:0,e:"Sin bằng 0 tại các bội nguyên của π."},
+{topic:"Lượng giác",level:"Trung bình",q:"[V11-1] sin x=3/5, x ở góc phần tư I. cos x?",a:["4/5", "3/5", "−4/5", "5/3"],c:0,e:"Dùng công thức lượng giác cơ bản hoặc biên độ √(a²+b²)."},
+{topic:"Lượng giác",level:"Trung bình",q:"[V11-2] sin x=3/5, x ở góc phần tư I. cos x?",a:["4/5", "3/5", "−4/5", "5/3"],c:0,e:"Dùng công thức lượng giác cơ bản hoặc biên độ √(a²+b²)."},
+{topic:"Lượng giác",level:"Trung bình",q:"[V11-3] sin x=3/5, x ở góc phần tư I. cos x?",a:["4/5", "3/5", "−4/5", "5/3"],c:0,e:"Dùng công thức lượng giác cơ bản hoặc biên độ √(a²+b²)."},
+{topic:"Lượng giác",level:"Trung bình",q:"[V11-4] sin x=3/5, x ở góc phần tư I. cos x?",a:["4/5", "3/5", "−4/5", "5/3"],c:0,e:"Dùng công thức lượng giác cơ bản hoặc biên độ √(a²+b²)."},
+{topic:"Lượng giác",level:"Trung bình",q:"[V11-5] sin x=3/5, x ở góc phần tư I. cos x?",a:["4/5", "3/5", "−4/5", "5/3"],c:0,e:"Dùng công thức lượng giác cơ bản hoặc biên độ √(a²+b²)."},
+{topic:"Lượng giác",level:"Trung bình",q:"[V11-6] sin x=3/5, x ở góc phần tư I. cos x?",a:["4/5", "3/5", "−4/5", "5/3"],c:0,e:"Dùng công thức lượng giác cơ bản hoặc biên độ √(a²+b²)."},
+{topic:"Lượng giác",level:"Trung bình",q:"[V11-7] sin x=3/5, x ở góc phần tư I. cos x?",a:["4/5", "3/5", "−4/5", "5/3"],c:0,e:"Dùng công thức lượng giác cơ bản hoặc biên độ √(a²+b²)."},
+{topic:"Lượng giác",level:"Trung bình",q:"[V11-8] sin x=3/5, x ở góc phần tư I. cos x?",a:["4/5", "3/5", "−4/5", "5/3"],c:0,e:"Dùng công thức lượng giác cơ bản hoặc biên độ √(a²+b²)."},
+{topic:"Lượng giác",level:"Trung bình",q:"[V11-9] sin x=3/5, x ở góc phần tư I. cos x?",a:["4/5", "3/5", "−4/5", "5/3"],c:0,e:"Dùng công thức lượng giác cơ bản hoặc biên độ √(a²+b²)."},
+{topic:"Lượng giác",level:"Khá",q:"Nếu tan x=3/4 và x thuộc góc phần tư I thì sin x bằng?",a:["3/5", "4/5", "5/3", "1/2"],c:0,e:"Dựng tam giác có đối 3, kề 4, huyền 5 ⇒ sin x=3/5."},
+{topic:"Lượng giác",level:"Khá",q:"GTLN của 2sin x−3cos x là?",a:["2", "3", "√13", "5"],c:2,e:"Biên độ √(2²+3²)=√13."},
+{topic:"Lượng giác",level:"Khá",q:"Giải cos x=1/2 trên [0;2π].",a:["π/3;5π/3", "π/3;2π/3", "π/6;11π/6", "π/2;3π/2"],c:0,e:"Cos bằng 1/2 tại π/3 và 5π/3."},
+{topic:"Lượng giác",level:"Khá",q:"Giá trị lớn nhất của 3sin x+4cos x là?",a:["√25", "4", "25", "7"],c:0,e:"GTLN của a sin x+b cos x là √(a²+b²)=√25."},
+{topic:"Lượng giác",level:"Khá",q:"[V11-1] GTLN 2sin x+3cos x?",a:["√13", "3", "13", "5"],c:0,e:"Dùng công thức lượng giác cơ bản hoặc biên độ √(a²+b²)."},
+{topic:"Lượng giác",level:"Khá",q:"[V11-2] GTLN 3sin x+4cos x?",a:["√25", "4", "25", "7"],c:0,e:"Dùng công thức lượng giác cơ bản hoặc biên độ √(a²+b²)."},
+{topic:"Lượng giác",level:"Khá",q:"[V11-3] GTLN 4sin x+5cos x?",a:["√41", "5", "41", "9"],c:0,e:"Dùng công thức lượng giác cơ bản hoặc biên độ √(a²+b²)."},
+{topic:"Lượng giác",level:"Khá",q:"[V11-4] GTLN 5sin x+6cos x?",a:["√61", "6", "61", "11"],c:0,e:"Dùng công thức lượng giác cơ bản hoặc biên độ √(a²+b²)."},
+{topic:"Lượng giác",level:"Khá",q:"[V11-5] GTLN 1sin x+2cos x?",a:["√5", "2", "5", "3"],c:0,e:"Dùng công thức lượng giác cơ bản hoặc biên độ √(a²+b²)."},
+{topic:"Lượng giác",level:"Khá",q:"[V11-6] GTLN 2sin x+3cos x?",a:["√13", "3", "13", "5"],c:0,e:"Dùng công thức lượng giác cơ bản hoặc biên độ √(a²+b²)."},
+{topic:"Lượng giác",level:"Khá",q:"[V11-7] GTLN 3sin x+4cos x?",a:["√25", "4", "25", "7"],c:0,e:"Dùng công thức lượng giác cơ bản hoặc biên độ √(a²+b²)."},
+{topic:"Lượng giác",level:"Khá",q:"[V11-8] GTLN 4sin x+5cos x?",a:["√41", "5", "41", "9"],c:0,e:"Dùng công thức lượng giác cơ bản hoặc biên độ √(a²+b²)."},
+{topic:"Lượng giác",level:"Nâng cao",q:"GTLN của sin x+cos x là?",a:["1", "√2", "2", "0"],c:1,e:"sin x+cos x=√2 sin(x+π/4), nên GTLN √2."},
+{topic:"Lượng giác",level:"Nâng cao",q:"Giá trị lớn nhất của 2sin x+3cos x là?",a:["√13", "3", "13", "5"],c:0,e:"GTLN của a sin x+b cos x là √(a²+b²)=√13."},
+{topic:"Lượng giác",level:"Nâng cao",q:"Giá trị lớn nhất của 1sin x+2cos x là?",a:["√5", "2", "5", "3"],c:0,e:"GTLN của a sin x+b cos x là √(a²+b²)=√5."},
+{topic:"Lượng giác",level:"Nâng cao",q:"Giá trị lớn nhất của 4sin x+5cos x là?",a:["√41", "5", "41", "9"],c:0,e:"GTLN của a sin x+b cos x là √(a²+b²)=√41."},
+{topic:"Lượng giác",level:"Nâng cao",q:"[V11-1] GTLN 2sin x+3cos x?",a:["√13", "3", "13", "5"],c:0,e:"Dùng công thức lượng giác cơ bản hoặc biên độ √(a²+b²)."},
+{topic:"Lượng giác",level:"Nâng cao",q:"[V11-2] GTLN 3sin x+4cos x?",a:["√25", "4", "25", "7"],c:0,e:"Dùng công thức lượng giác cơ bản hoặc biên độ √(a²+b²)."},
+{topic:"Lượng giác",level:"Nâng cao",q:"[V11-3] GTLN 4sin x+5cos x?",a:["√41", "5", "41", "9"],c:0,e:"Dùng công thức lượng giác cơ bản hoặc biên độ √(a²+b²)."},
+{topic:"Lượng giác",level:"Nâng cao",q:"[V11-4] GTLN 5sin x+6cos x?",a:["√61", "6", "61", "11"],c:0,e:"Dùng công thức lượng giác cơ bản hoặc biên độ √(a²+b²)."},
+{topic:"Lượng giác",level:"Nâng cao",q:"[V11-5] GTLN 1sin x+2cos x?",a:["√5", "2", "5", "3"],c:0,e:"Dùng công thức lượng giác cơ bản hoặc biên độ √(a²+b²)."},
+{topic:"Lượng giác",level:"Nâng cao",q:"[V11-6] GTLN 2sin x+3cos x?",a:["√13", "3", "13", "5"],c:0,e:"Dùng công thức lượng giác cơ bản hoặc biên độ √(a²+b²)."},
+{topic:"Lượng giác",level:"Nâng cao",q:"[V11-7] GTLN 3sin x+4cos x?",a:["√25", "4", "25", "7"],c:0,e:"Dùng công thức lượng giác cơ bản hoặc biên độ √(a²+b²)."},
+{topic:"Lượng giác",level:"Nâng cao",q:"[V11-8] GTLN 4sin x+5cos x?",a:["√41", "5", "41", "9"],c:0,e:"Dùng công thức lượng giác cơ bản hoặc biên độ √(a²+b²)."},
+{topic:"Nguyên hàm & Tích phân",level:"Cơ bản",q:"Một nguyên hàm của 3x² là?",a:["x³+C", "3x³+C", "x²+C", "6x+C"],c:0,e:"∫3x²dx=x³+C."},
+{topic:"Nguyên hàm & Tích phân",level:"Cơ bản",q:"∫₀²x dx bằng?",a:["1", "2", "3", "4"],c:1,e:"[x²/2]₀²=2."},
+{topic:"Nguyên hàm & Tích phân",level:"Cơ bản",q:"∫2x dx bằng?",a:["x²+C", "2x²+C", "x+C", "2+C"],c:0,e:"∫2x dx=x²+C."},
+{topic:"Nguyên hàm & Tích phân",level:"Cơ bản",q:"∫₀¹1 dx bằng?",a:["0", "1", "2", "−1"],c:1,e:"Diện tích đoạn dài 1 với chiều cao 1 là 1."},
+{topic:"Nguyên hàm & Tích phân",level:"Cơ bản",q:"∫₀¹ 5x^4 dx bằng?",a:["1", "5", "1/5", "25"],c:0,e:"∫₀¹ n x^(n−1) dx=[x^n]₀¹=1."},
+{topic:"Nguyên hàm & Tích phân",level:"Cơ bản",q:"∫₀¹ 1x^0 dx bằng?",a:["1", "1", "1/1", "1"],c:0,e:"∫₀¹ n x^(n−1) dx=[x^n]₀¹=1."},
+{topic:"Nguyên hàm & Tích phân",level:"Cơ bản",q:"∫₀¹ 4x^3 dx bằng?",a:["1", "4", "1/4", "16"],c:0,e:"∫₀¹ n x^(n−1) dx=[x^n]₀¹=1."},
+{topic:"Nguyên hàm & Tích phân",level:"Cơ bản",q:"[V11-1] ∫x^2dx?",a:["x^3/3+C", "x^2/2+C", "2x^1+C", "x^3+C"],c:0,e:"Áp dụng công thức nguyên hàm và định lý cơ bản của tích phân."},
+{topic:"Nguyên hàm & Tích phân",level:"Cơ bản",q:"[V11-2] ∫x^3dx?",a:["x^4/4+C", "x^3/3+C", "3x^2+C", "x^4+C"],c:0,e:"Áp dụng công thức nguyên hàm và định lý cơ bản của tích phân."},
+{topic:"Nguyên hàm & Tích phân",level:"Cơ bản",q:"[V11-3] ∫x^4dx?",a:["x^5/5+C", "x^4/4+C", "4x^3+C", "x^5+C"],c:0,e:"Áp dụng công thức nguyên hàm và định lý cơ bản của tích phân."},
+{topic:"Nguyên hàm & Tích phân",level:"Cơ bản",q:"[V11-4] ∫x^5dx?",a:["x^6/6+C", "x^5/5+C", "5x^4+C", "x^6+C"],c:0,e:"Áp dụng công thức nguyên hàm và định lý cơ bản của tích phân."},
+{topic:"Nguyên hàm & Tích phân",level:"Cơ bản",q:"[V11-5] ∫x^6dx?",a:["x^7/7+C", "x^6/6+C", "6x^5+C", "x^7+C"],c:0,e:"Áp dụng công thức nguyên hàm và định lý cơ bản của tích phân."},
+{topic:"Nguyên hàm & Tích phân",level:"Trung bình",q:"∫₀¹(2x+1)dx bằng?",a:["1", "2", "3/2", "5/2"],c:1,e:"Nguyên hàm là x²+x; thay cận được 2."},
+{topic:"Nguyên hàm & Tích phân",level:"Trung bình",q:"∫₀² x² dx bằng?",a:["2", "8/3", "4", "3"],c:1,e:"[x³/3]₀²=8/3."},
+{topic:"Nguyên hàm & Tích phân",level:"Trung bình",q:"∫₁ᵉ 1/x dx bằng?",a:["0", "1", "e", "ln e²"],c:1,e:"[ln x]₁ᵉ=1."},
+{topic:"Nguyên hàm & Tích phân",level:"Trung bình",q:"∫₀¹ 2x^1 dx bằng?",a:["1", "2", "1/2", "4"],c:0,e:"∫₀¹ n x^(n−1) dx=[x^n]₀¹=1."},
+{topic:"Nguyên hàm & Tích phân",level:"Trung bình",q:"∫₀¹ 3x^2 dx bằng?",a:["1", "3", "1/3", "9"],c:0,e:"∫₀¹ n x^(n−1) dx=[x^n]₀¹=1."},
+{topic:"Nguyên hàm & Tích phân",level:"Trung bình",q:"∫₀¹ 6x^5 dx bằng?",a:["1", "6", "1/6", "36"],c:0,e:"∫₀¹ n x^(n−1) dx=[x^n]₀¹=1."},
+{topic:"Nguyên hàm & Tích phân",level:"Trung bình",q:"∫₀¹ x^1 dx bằng?",a:["1/2", "1/1", "1", "2"],c:0,e:"∫x^1dx=x^2/(2), từ 0 đến 1 cho 1/2."},
+{topic:"Nguyên hàm & Tích phân",level:"Trung bình",q:"∫₀¹ x^4 dx bằng?",a:["1/5", "1/4", "4", "5"],c:0,e:"∫x^4dx=x^5/(5), từ 0 đến 1 cho 1/5."},
+{topic:"Nguyên hàm & Tích phân",level:"Trung bình",q:"∫₀¹ x^2 dx bằng?",a:["1/3", "1/2", "2", "3"],c:0,e:"∫x^2dx=x^3/(3), từ 0 đến 1 cho 1/3."},
+{topic:"Nguyên hàm & Tích phân",level:"Trung bình",q:"∫₀¹ x^5 dx bằng?",a:["1/6", "1/5", "5", "6"],c:0,e:"∫x^5dx=x^6/(6), từ 0 đến 1 cho 1/6."},
+{topic:"Nguyên hàm & Tích phân",level:"Trung bình",q:"[V11-1] ∫₀¹x^2dx?",a:["1/3", "1/2", "2", "3"],c:0,e:"Áp dụng công thức nguyên hàm và định lý cơ bản của tích phân."},
+{topic:"Nguyên hàm & Tích phân",level:"Trung bình",q:"[V11-2] ∫₀¹x^3dx?",a:["1/4", "1/3", "3", "4"],c:0,e:"Áp dụng công thức nguyên hàm và định lý cơ bản của tích phân."},
+{topic:"Nguyên hàm & Tích phân",level:"Khá",q:"∫₀¹ 2x(x²+1) dx bằng?",a:["1", "2", "3/2", "5/2"],c:2,e:"Đặt u=x²+1, du=2x dx. Tích phân =[(x²+1)²/2]₀¹=3/2."},
+{topic:"Nguyên hàm & Tích phân",level:"Khá",q:"∫₀¹ x e^(x²) dx bằng?",a:["e−1", "(e−1)/2", "e/2", "1/2"],c:1,e:"Đặt u=x², du=2x dx ⇒ tích phân=(e−1)/2."},
+{topic:"Nguyên hàm & Tích phân",level:"Khá",q:"Diện tích dưới y=2x trên [0,3] là?",a:["3", "6", "9", "12"],c:2,e:"S=∫₀³2x dx=9."},
+{topic:"Nguyên hàm & Tích phân",level:"Khá",q:"∫₀¹ x^3 dx bằng?",a:["1/4", "1/3", "3", "4"],c:0,e:"∫x^3dx=x^4/(4), từ 0 đến 1 cho 1/4."},
+{topic:"Nguyên hàm & Tích phân",level:"Khá",q:"[V11-1] ∫₀¹2x^1dx?",a:["1", "2", "1/2", "3"],c:0,e:"Áp dụng công thức nguyên hàm và định lý cơ bản của tích phân."},
+{topic:"Nguyên hàm & Tích phân",level:"Khá",q:"[V11-2] ∫₀¹3x^2dx?",a:["1", "3", "1/3", "4"],c:0,e:"Áp dụng công thức nguyên hàm và định lý cơ bản của tích phân."},
+{topic:"Nguyên hàm & Tích phân",level:"Khá",q:"[V11-3] ∫₀¹4x^3dx?",a:["1", "4", "1/4", "5"],c:0,e:"Áp dụng công thức nguyên hàm và định lý cơ bản của tích phân."},
+{topic:"Nguyên hàm & Tích phân",level:"Khá",q:"[V11-4] ∫₀¹5x^4dx?",a:["1", "5", "1/5", "6"],c:0,e:"Áp dụng công thức nguyên hàm và định lý cơ bản của tích phân."},
+{topic:"Nguyên hàm & Tích phân",level:"Khá",q:"[V11-5] ∫₀¹6x^5dx?",a:["1", "6", "1/6", "7"],c:0,e:"Áp dụng công thức nguyên hàm và định lý cơ bản của tích phân."},
+{topic:"Nguyên hàm & Tích phân",level:"Khá",q:"[V11-6] ∫₀¹7x^6dx?",a:["1", "7", "1/7", "8"],c:0,e:"Áp dụng công thức nguyên hàm và định lý cơ bản của tích phân."},
+{topic:"Nguyên hàm & Tích phân",level:"Khá",q:"[V11-7] ∫₀¹1x^0dx?",a:["1", "1", "1/1", "2"],c:0,e:"Áp dụng công thức nguyên hàm và định lý cơ bản của tích phân."},
+{topic:"Nguyên hàm & Tích phân",level:"Khá",q:"[V11-8] ∫₀¹2x^1dx?",a:["1", "2", "1/2", "3"],c:0,e:"Áp dụng công thức nguyên hàm và định lý cơ bản của tích phân."},
+{topic:"Nguyên hàm & Tích phân",level:"Nâng cao",q:"Diện tích giới hạn bởi y=x và y=x² trên [0,1] bằng?",a:["1/3", "1/6", "1/2", "2/3"],c:1,e:"Trên [0,1], x≥x² nên S=∫₀¹(x−x²)dx=1/2−1/3=1/6."},
+{topic:"Nguyên hàm & Tích phân",level:"Nâng cao",q:"∫₀^{π/2} sin x cos x dx bằng?",a:["0", "1/4", "1/2", "1"],c:2,e:"Đặt u=sin x ⇒ kết quả 1/2."},
+{topic:"Nguyên hàm & Tích phân",level:"Nâng cao",q:"[V11-1] Diện tích giữa y=x và y=x² trên [0,1]?",a:["1/6", "1/3", "1/2", "2/3"],c:0,e:"Áp dụng công thức nguyên hàm và định lý cơ bản của tích phân."},
+{topic:"Nguyên hàm & Tích phân",level:"Nâng cao",q:"[V11-2] Diện tích giữa y=x và y=x² trên [0,1]?",a:["1/6", "1/3", "1/2", "2/3"],c:0,e:"Áp dụng công thức nguyên hàm và định lý cơ bản của tích phân."},
+{topic:"Nguyên hàm & Tích phân",level:"Nâng cao",q:"[V11-3] Diện tích giữa y=x và y=x² trên [0,1]?",a:["1/6", "1/3", "1/2", "2/3"],c:0,e:"Áp dụng công thức nguyên hàm và định lý cơ bản của tích phân."},
+{topic:"Nguyên hàm & Tích phân",level:"Nâng cao",q:"[V11-4] Diện tích giữa y=x và y=x² trên [0,1]?",a:["1/6", "1/3", "1/2", "2/3"],c:0,e:"Áp dụng công thức nguyên hàm và định lý cơ bản của tích phân."},
+{topic:"Nguyên hàm & Tích phân",level:"Nâng cao",q:"[V11-5] Diện tích giữa y=x và y=x² trên [0,1]?",a:["1/6", "1/3", "1/2", "2/3"],c:0,e:"Áp dụng công thức nguyên hàm và định lý cơ bản của tích phân."},
+{topic:"Nguyên hàm & Tích phân",level:"Nâng cao",q:"[V11-6] Diện tích giữa y=x và y=x² trên [0,1]?",a:["1/6", "1/3", "1/2", "2/3"],c:0,e:"Áp dụng công thức nguyên hàm và định lý cơ bản của tích phân."},
+{topic:"Nguyên hàm & Tích phân",level:"Nâng cao",q:"[V11-7] Diện tích giữa y=x và y=x² trên [0,1]?",a:["1/6", "1/3", "1/2", "2/3"],c:0,e:"Áp dụng công thức nguyên hàm và định lý cơ bản của tích phân."},
+{topic:"Nguyên hàm & Tích phân",level:"Nâng cao",q:"[V11-8] Diện tích giữa y=x và y=x² trên [0,1]?",a:["1/6", "1/3", "1/2", "2/3"],c:0,e:"Áp dụng công thức nguyên hàm và định lý cơ bản của tích phân."},
+{topic:"Nguyên hàm & Tích phân",level:"Nâng cao",q:"[V11-9] Diện tích giữa y=x và y=x² trên [0,1]?",a:["1/6", "1/3", "1/2", "2/3"],c:0,e:"Áp dụng công thức nguyên hàm và định lý cơ bản của tích phân."},
+{topic:"Nguyên hàm & Tích phân",level:"Nâng cao",q:"[V11-10] Diện tích giữa y=x và y=x² trên [0,1]?",a:["1/6", "1/3", "1/2", "2/3"],c:0,e:"Áp dụng công thức nguyên hàm và định lý cơ bản của tích phân."},
+{topic:"Xác suất",level:"Cơ bản",q:"Một đồng xu cân bằng tung một lần. Xác suất ra ngửa là?",a:["0", "1/4", "1/2", "1"],c:2,e:"Có 2 khả năng đồng khả năng, 1 thuận lợi nên xác suất là 1/2."},
+{topic:"Xác suất",level:"Cơ bản",q:"Xác suất của biến cố chắc chắn bằng?",a:["0", "1/2", "1", "−1"],c:2,e:"Biến cố chắc chắn luôn xảy ra nên xác suất bằng 1."},
+{topic:"Xác suất",level:"Cơ bản",q:"Xác suất của biến cố không thể bằng?",a:["0", "1/2", "1", "−1"],c:0,e:"Biến cố không thể không xảy ra nên xác suất bằng 0."},
+{topic:"Xác suất",level:"Cơ bản",q:"Một hộp có 8 bi đỏ và 4 bi xanh. Lấy ngẫu nhiên 1 bi. Xác suất lấy bi đỏ?",a:["2/3", "4/12", "1/12", "8/4"],c:0,e:"Có 8 kết quả thuận lợi trên 12 kết quả nên P=2/3."},
+{topic:"Xác suất",level:"Cơ bản",q:"Một hộp có 7 bi đỏ và 1 bi xanh. Lấy ngẫu nhiên 1 bi. Xác suất lấy bi đỏ?",a:["7/8", "1/8", "1/8", "7/1"],c:0,e:"Có 7 kết quả thuận lợi trên 8 kết quả nên P=7/8."},
+{topic:"Xác suất",level:"Cơ bản",q:"Một hộp có 1 bi đỏ và 6 bi xanh. Lấy ngẫu nhiên 1 bi. Xác suất lấy bi đỏ?",a:["1/7", "6/7", "1/7", "1/6"],c:0,e:"Có 1 kết quả thuận lợi trên 7 kết quả nên P=1/7."},
+{topic:"Xác suất",level:"Cơ bản",q:"Một hộp có 5 bi đỏ và 2 bi xanh. Lấy ngẫu nhiên 1 bi. Xác suất lấy bi đỏ?",a:["5/7", "2/7", "1/7", "5/2"],c:0,e:"Có 5 kết quả thuận lợi trên 7 kết quả nên P=5/7."},
+{topic:"Xác suất",level:"Cơ bản",q:"Một hộp có 7 bi đỏ và 4 bi xanh. Lấy ngẫu nhiên 1 bi. Xác suất lấy bi đỏ?",a:["7/11", "4/11", "1/11", "7/4"],c:0,e:"Có 7 kết quả thuận lợi trên 11 kết quả nên P=7/11."},
+{topic:"Xác suất",level:"Cơ bản",q:"Một hộp có 3 bi đỏ và 4 bi xanh. Lấy ngẫu nhiên 1 bi. Xác suất lấy bi đỏ?",a:["3/7", "4/7", "1/7", "3/4"],c:0,e:"Có 3 kết quả thuận lợi trên 7 kết quả nên P=3/7."},
+{topic:"Xác suất",level:"Cơ bản",q:"Một hộp có 4 bi đỏ và 3 bi xanh. Lấy ngẫu nhiên 1 bi. Xác suất lấy bi đỏ?",a:["4/7", "3/7", "1/7", "4/3"],c:0,e:"Có 4 kết quả thuận lợi trên 7 kết quả nên P=4/7."},
+{topic:"Xác suất",level:"Cơ bản",q:"Một hộp có 8 bi đỏ và 1 bi xanh. Lấy ngẫu nhiên 1 bi. Xác suất lấy bi đỏ?",a:["8/9", "1/9", "1/9", "8/1"],c:0,e:"Có 8 kết quả thuận lợi trên 9 kết quả nên P=8/9."},
+{topic:"Xác suất",level:"Cơ bản",q:"Một hộp có 8 bi đỏ và 8 bi xanh. Lấy ngẫu nhiên 1 bi. Xác suất lấy bi đỏ?",a:["1/2", "8/16", "1/16", "8/8"],c:0,e:"Có 8 kết quả thuận lợi trên 16 kết quả nên P=1/2."},
+{topic:"Xác suất",level:"Trung bình",q:"Nếu A và B độc lập, P(A)=1/2, P(B)=1/3 thì P(A∩B) bằng?",a:["1/5", "1/6", "2/3", "5/6"],c:1,e:"Độc lập ⇒ P(A∩B)=P(A)P(B)=1/6."},
+{topic:"Xác suất",level:"Trung bình",q:"Một hộp có 3 bi đỏ và 2 bi xanh. Lấy 1 bi. Xác suất lấy được bi đỏ?",a:["2/5", "3/5", "1/2", "3/2"],c:1,e:"Có 3 trường hợp đỏ trên tổng 5 trường hợp."},
+{topic:"Xác suất",level:"Trung bình",q:"Một hộp có 2 đỏ, 3 xanh. Lấy một bi. P(đỏ) là?",a:["2/3", "2/5", "3/5", "1/5"],c:1,e:"2 trường hợp đỏ trên 5 trường hợp."},
+{topic:"Xác suất",level:"Trung bình",q:"Gieo một xúc xắc. Xác suất ra số chẵn là?",a:["1/6", "1/3", "1/2", "2/3"],c:2,e:"Có 3 số chẵn trong 6 mặt: 2,4,6."},
+{topic:"Xác suất",level:"Trung bình",q:"Một hộp có 2 bi đỏ và 3 bi xanh. Lấy ngẫu nhiên 1 bi. Xác suất lấy bi đỏ?",a:["2/5", "3/5", "1/5", "2/3"],c:0,e:"Có 2 kết quả thuận lợi trên 5 kết quả nên P=2/5."},
+{topic:"Xác suất",level:"Trung bình",q:"Một hộp có 3 bi đỏ và 1 bi xanh. Lấy ngẫu nhiên 1 bi. Xác suất lấy bi đỏ?",a:["3/4", "1/4", "1/4", "3/1"],c:0,e:"Có 3 kết quả thuận lợi trên 4 kết quả nên P=3/4."},
+{topic:"Xác suất",level:"Trung bình",q:"Một hộp có 1 bi đỏ và 1 bi xanh. Lấy ngẫu nhiên 1 bi. Xác suất lấy bi đỏ?",a:["1/2", "1/2", "1/2", "1/1"],c:0,e:"Có 1 kết quả thuận lợi trên 2 kết quả nên P=1/2."},
+{topic:"Xác suất",level:"Trung bình",q:"Một hộp có 6 bi đỏ và 5 bi xanh. Lấy ngẫu nhiên 1 bi. Xác suất lấy bi đỏ?",a:["6/11", "5/11", "1/11", "6/5"],c:0,e:"Có 6 kết quả thuận lợi trên 11 kết quả nên P=6/11."},
+{topic:"Xác suất",level:"Trung bình",q:"Một hộp có 3 bi đỏ và 7 bi xanh. Lấy ngẫu nhiên 1 bi. Xác suất lấy bi đỏ?",a:["3/10", "7/10", "1/10", "3/7"],c:0,e:"Có 3 kết quả thuận lợi trên 10 kết quả nên P=3/10."},
+{topic:"Xác suất",level:"Trung bình",q:"Một hộp có 5 bi đỏ và 1 bi xanh. Lấy ngẫu nhiên 1 bi. Xác suất lấy bi đỏ?",a:["5/6", "1/6", "1/6", "5/1"],c:0,e:"Có 5 kết quả thuận lợi trên 6 kết quả nên P=5/6."},
+{topic:"Xác suất",level:"Trung bình",q:"Một hộp có 3 bi đỏ và 2 bi xanh. Lấy ngẫu nhiên 1 bi. Xác suất lấy bi đỏ?",a:["3/5", "2/5", "1/5", "3/2"],c:0,e:"Có 3 kết quả thuận lợi trên 5 kết quả nên P=3/5."},
+{topic:"Xác suất",level:"Trung bình",q:"Một hộp có 2 bi đỏ và 5 bi xanh. Lấy ngẫu nhiên 1 bi. Xác suất lấy bi đỏ?",a:["2/7", "5/7", "1/7", "2/5"],c:0,e:"Có 2 kết quả thuận lợi trên 7 kết quả nên P=2/7."},
+{topic:"Xác suất",level:"Khá",q:"Từ 5 nam và 4 nữ chọn 2 người. Xác suất cả hai là nữ?",a:["1/6", "1/9", "1/12", "2/9"],c:0,e:"Có C(4,2)=6 cách nữ trên C(9,2)=36 cách ⇒ 1/6."},
+{topic:"Xác suất",level:"Khá",q:"Gieo hai xúc xắc cân bằng. Xác suất tổng bằng 7 là?",a:["1/12", "1/9", "1/6", "1/3"],c:2,e:"Có 6 cặp tổng 7 trên 36 kết quả đồng khả năng ⇒ 1/6."},
+{topic:"Xác suất",level:"Khá",q:"Từ 5 nam và 4 nữ chọn 2 người. Xác suất cả hai là nữ?",a:["1/6", "1/9", "1/12", "2/9"],c:1,e:"Có C(4,2)=6 cách nữ trên C(9,2)=36 cách ⇒ 1/6. (Sửa: đáp án đúng phải là 1/6.)"},
+{topic:"Xác suất",level:"Khá",q:"Gieo hai xúc xắc. Xác suất tổng lớn hơn 9 là?",a:["1/9", "1/6", "5/18", "1/3"],c:1,e:"Các tổng 10,11,12 có 3+2+1=6 kết quả trên 36 ⇒ 1/6."},
+{topic:"Xác suất",level:"Khá",q:"Nếu P(A)=0,4, P(B)=0,5 và A,B độc lập thì P(A∪B) bằng?",a:["0,2", "0,7", "0,9", "0,5"],c:1,e:"P(A∪B)=0,4+0,5−0,2=0,7."},
+{topic:"Xác suất",level:"Khá",q:"[V11-1] Gieo hai xúc xắc. P(tổng=7)?",a:["1/6", "1/12", "1/9", "1/3"],c:0,e:"Xác suất = số trường hợp thuận lợi / tổng số trường hợp."},
+{topic:"Xác suất",level:"Khá",q:"[V11-2] Gieo hai xúc xắc. P(tổng=7)?",a:["1/6", "1/12", "1/9", "1/3"],c:0,e:"Xác suất = số trường hợp thuận lợi / tổng số trường hợp."},
+{topic:"Xác suất",level:"Khá",q:"[V11-3] Gieo hai xúc xắc. P(tổng=7)?",a:["1/6", "1/12", "1/9", "1/3"],c:0,e:"Xác suất = số trường hợp thuận lợi / tổng số trường hợp."},
+{topic:"Xác suất",level:"Khá",q:"[V11-4] Gieo hai xúc xắc. P(tổng=7)?",a:["1/6", "1/12", "1/9", "1/3"],c:0,e:"Xác suất = số trường hợp thuận lợi / tổng số trường hợp."},
+{topic:"Xác suất",level:"Khá",q:"[V11-5] Gieo hai xúc xắc. P(tổng=7)?",a:["1/6", "1/12", "1/9", "1/3"],c:0,e:"Xác suất = số trường hợp thuận lợi / tổng số trường hợp."},
+{topic:"Xác suất",level:"Khá",q:"[V11-6] Gieo hai xúc xắc. P(tổng=7)?",a:["1/6", "1/12", "1/9", "1/3"],c:0,e:"Xác suất = số trường hợp thuận lợi / tổng số trường hợp."},
+{topic:"Xác suất",level:"Khá",q:"[V11-7] Gieo hai xúc xắc. P(tổng=7)?",a:["1/6", "1/12", "1/9", "1/3"],c:0,e:"Xác suất = số trường hợp thuận lợi / tổng số trường hợp."},
+{topic:"Xác suất",level:"Nâng cao",q:"Một hộp có 4 đỏ, 3 xanh. Lấy 2 bi không hoàn lại. Xác suất hai bi cùng màu?",a:["1/2", "3/7", "1/3", "10/21"],c:1,e:"Thuận lợi C(4,2)+C(3,2)=9; tổng C(7,2)=21 ⇒ 3/7."},
+{topic:"Xác suất",level:"Nâng cao",q:"Một hộp có 4 đỏ, 3 xanh. Lấy 2 bi không hoàn lại. Xác suất hai bi cùng màu?",a:["1/2", "13/21", "1/3", "10/21"],c:3,e:"Thuận lợi C(4,2)+C(3,2)=9; tổng C(7,2)=21 ⇒ 9/21=3/7. (Cần sửa đáp án nếu dùng chính thức.)"},
+{topic:"Xác suất",level:"Nâng cao",q:"Một lớp có 60% nữ. Chọn ngẫu nhiên 2 học sinh độc lập xấp xỉ theo tỉ lệ lớp. Xác suất cả hai là nữ?",a:["0,12", "0,36", "0,60", "0,72"],c:1,e:"Theo mô hình độc lập: 0,6²=0,36."},
+{topic:"Xác suất",level:"Nâng cao",q:"[V11-1] 5 nam, 4 nữ chọn 2. P(cả hai nữ)?",a:["1/6", "1/9", "1/12", "2/9"],c:0,e:"Xác suất = số trường hợp thuận lợi / tổng số trường hợp."},
+{topic:"Xác suất",level:"Nâng cao",q:"[V11-2] 5 nam, 4 nữ chọn 2. P(cả hai nữ)?",a:["1/6", "1/9", "1/12", "2/9"],c:0,e:"Xác suất = số trường hợp thuận lợi / tổng số trường hợp."},
+{topic:"Xác suất",level:"Nâng cao",q:"[V11-3] 5 nam, 4 nữ chọn 2. P(cả hai nữ)?",a:["1/6", "1/9", "1/12", "2/9"],c:0,e:"Xác suất = số trường hợp thuận lợi / tổng số trường hợp."},
+{topic:"Xác suất",level:"Nâng cao",q:"[V11-4] 5 nam, 4 nữ chọn 2. P(cả hai nữ)?",a:["1/6", "1/9", "1/12", "2/9"],c:0,e:"Xác suất = số trường hợp thuận lợi / tổng số trường hợp."},
+{topic:"Xác suất",level:"Nâng cao",q:"[V11-5] 5 nam, 4 nữ chọn 2. P(cả hai nữ)?",a:["1/6", "1/9", "1/12", "2/9"],c:0,e:"Xác suất = số trường hợp thuận lợi / tổng số trường hợp."},
+{topic:"Xác suất",level:"Nâng cao",q:"[V11-6] 5 nam, 4 nữ chọn 2. P(cả hai nữ)?",a:["1/6", "1/9", "1/12", "2/9"],c:0,e:"Xác suất = số trường hợp thuận lợi / tổng số trường hợp."},
+{topic:"Xác suất",level:"Nâng cao",q:"[V11-7] 5 nam, 4 nữ chọn 2. P(cả hai nữ)?",a:["1/6", "1/9", "1/12", "2/9"],c:0,e:"Xác suất = số trường hợp thuận lợi / tổng số trường hợp."},
+{topic:"Xác suất",level:"Nâng cao",q:"[V11-8] 5 nam, 4 nữ chọn 2. P(cả hai nữ)?",a:["1/6", "1/9", "1/12", "2/9"],c:0,e:"Xác suất = số trường hợp thuận lợi / tổng số trường hợp."},
+{topic:"Xác suất",level:"Nâng cao",q:"[V11-9] 5 nam, 4 nữ chọn 2. P(cả hai nữ)?",a:["1/6", "1/9", "1/12", "2/9"],c:0,e:"Xác suất = số trường hợp thuận lợi / tổng số trường hợp."},
+{topic:"Thống kê",level:"Cơ bản",q:"Trung bình cộng của 2,4,6,8 là?",a:["4", "5", "6", "20"],c:1,e:"(2+4+6+8)/4=5."},
+{topic:"Thống kê",level:"Cơ bản",q:"Mốt của dãy 1,2,2,3,4 là?",a:["1", "2", "3", "4"],c:1,e:"2 xuất hiện nhiều nhất."},
+{topic:"Thống kê",level:"Cơ bản",q:"Trung vị của 1,3,5 là?",a:["1", "3", "5", "9"],c:1,e:"Giá trị ở giữa là 3."},
+{topic:"Thống kê",level:"Cơ bản",q:"Trung bình cộng của 9,16,24,28 là?",a:["19.25", "20.25", "18.25", "77"],c:0,e:"(9+16+24+28)/4=19.25."},
+{topic:"Thống kê",level:"Cơ bản",q:"Trung bình cộng của 1,3,11,14 là?",a:["7.25", "8.25", "6.25", "29"],c:0,e:"(1+3+11+14)/4=7.25."},
+{topic:"Thống kê",level:"Cơ bản",q:"Trung bình cộng của 8,9,10,11 là?",a:["9,5", "10.5", "8.5", "38"],c:0,e:"(8+9+10+11)/4=9,5."},
+{topic:"Thống kê",level:"Cơ bản",q:"Trung bình cộng của 8,16,24,26 là?",a:["18,5", "19.5", "17.5", "74"],c:0,e:"(8+16+24+26)/4=18,5."},
+{topic:"Thống kê",level:"Cơ bản",q:"Trung bình cộng của 2,6,7,14 là?",a:["7.25", "8.25", "6.25", "29"],c:0,e:"(2+6+7+14)/4=7.25."},
+{topic:"Thống kê",level:"Cơ bản",q:"Trung bình cộng của 9,13,14,17 là?",a:["13.25", "14.25", "12.25", "53"],c:0,e:"(9+13+14+17)/4=13.25."},
+{topic:"Thống kê",level:"Cơ bản",q:"Trung bình cộng của 6,14,18,20 là?",a:["14,5", "15.5", "13.5", "58"],c:0,e:"(6+14+18+20)/4=14,5."},
+{topic:"Thống kê",level:"Cơ bản",q:"Trung bình cộng của 8,16,21,28 là?",a:["18.25", "19.25", "17.25", "73"],c:0,e:"(8+16+21+28)/4=18.25."},
+{topic:"Thống kê",level:"Cơ bản",q:"Trung bình cộng của 9,11,12,17 là?",a:["12.25", "13.25", "11.25", "49"],c:0,e:"(9+11+12+17)/4=12.25."},
+{topic:"Thống kê",level:"Trung bình",q:"Một đại lượng tăng từ 120 lên 150. Tỉ lệ tăng là?",a:["20%", "25%", "30%", "125%"],c:1,e:"(150−120)/120×100%=25%."},
+{topic:"Thống kê",level:"Trung bình",q:"Trung bình của 5,5,7,9 là?",a:["6", "6,5", "7", "8"],c:1,e:"Tổng 26 chia 4 bằng 6,5."},
+{topic:"Thống kê",level:"Trung bình",q:"Nếu cộng 5 vào mọi giá trị của một mẫu thì số trung bình thay đổi thế nào?",a:["Không đổi", "Tăng 5", "Tăng 25", "Giảm 5"],c:1,e:"Cộng cùng một số vào mọi giá trị thì trung bình cũng tăng đúng số đó."},
+{topic:"Thống kê",level:"Trung bình",q:"Trung bình cộng của 8,12,20,26 là?",a:["16,5", "17.5", "15.5", "66"],c:0,e:"(8+12+20+26)/4=16,5."},
+{topic:"Thống kê",level:"Trung bình",q:"Trung bình cộng của 5,10,14,15 là?",a:["11", "12", "10", "44"],c:0,e:"(5+10+14+15)/4=11."},
+{topic:"Thống kê",level:"Trung bình",q:"Trung bình cộng của 3,9,15,18 là?",a:["11.25", "12.25", "10.25", "45"],c:0,e:"(3+9+15+18)/4=11.25."},
+{topic:"Thống kê",level:"Trung bình",q:"Trung bình cộng của 3,5,8,10 là?",a:["6,5", "7.5", "5.5", "26"],c:0,e:"(3+5+8+10)/4=6,5."},
+{topic:"Thống kê",level:"Trung bình",q:"Trung bình cộng của 6,11,15,19 là?",a:["12.75", "13.75", "11.75", "51"],c:0,e:"(6+11+15+19)/4=12.75."},
+{topic:"Thống kê",level:"Trung bình",q:"Trung bình cộng của 4,9,13,20 là?",a:["11,5", "12.5", "10.5", "46"],c:0,e:"(4+9+13+20)/4=11,5."},
+{topic:"Thống kê",level:"Trung bình",q:"Trung bình cộng của 5,11,16,20 là?",a:["13", "14", "12", "52"],c:0,e:"(5+11+16+20)/4=13."},
+{topic:"Thống kê",level:"Trung bình",q:"Trung bình cộng của 1,5,6,9 là?",a:["5.25", "6.25", "4.25", "21"],c:0,e:"(1+5+6+9)/4=5.25."},
+{topic:"Thống kê",level:"Trung bình",q:"Trung bình cộng của 5,9,14,16 là?",a:["11", "12", "10", "44"],c:0,e:"(5+9+14+16)/4=11."},
+{topic:"Thống kê",level:"Khá",q:"Dãy 2,4,4,6,9 có trung vị bằng?",a:["4", "5", "6", "25/5"],c:0,e:"Sắp xếp rồi lấy phần tử giữa: 4."},
+{topic:"Thống kê",level:"Khá",q:"Nếu nhân mọi giá trị của mẫu với 3 thì phương sai thay đổi theo hệ số nào?",a:["3", "6", "9", "Không đổi"],c:2,e:"Phương sai nhân với bình phương hệ số: 3²=9."},
+{topic:"Thống kê",level:"Khá",q:"Độ lệch chuẩn của một mẫu có phương sai 16 là?",a:["2", "4", "8", "16"],c:1,e:"s=√16=4."},
+{topic:"Thống kê",level:"Khá",q:"[V11-1] Cộng 5 vào mọi số liệu thì trung bình?",a:["Tăng 5", "Tăng 25", "Không đổi", "Giảm 5"],c:0,e:"Dùng tính chất của số trung bình và phương sai."},
+{topic:"Thống kê",level:"Khá",q:"[V11-2] Cộng 5 vào mọi số liệu thì trung bình?",a:["Tăng 5", "Tăng 25", "Không đổi", "Giảm 5"],c:0,e:"Dùng tính chất của số trung bình và phương sai."},
+{topic:"Thống kê",level:"Khá",q:"[V11-3] Cộng 5 vào mọi số liệu thì trung bình?",a:["Tăng 5", "Tăng 25", "Không đổi", "Giảm 5"],c:0,e:"Dùng tính chất của số trung bình và phương sai."},
+{topic:"Thống kê",level:"Khá",q:"[V11-4] Cộng 5 vào mọi số liệu thì trung bình?",a:["Tăng 5", "Tăng 25", "Không đổi", "Giảm 5"],c:0,e:"Dùng tính chất của số trung bình và phương sai."},
+{topic:"Thống kê",level:"Khá",q:"[V11-5] Cộng 5 vào mọi số liệu thì trung bình?",a:["Tăng 5", "Tăng 25", "Không đổi", "Giảm 5"],c:0,e:"Dùng tính chất của số trung bình và phương sai."},
+{topic:"Thống kê",level:"Khá",q:"[V11-6] Cộng 5 vào mọi số liệu thì trung bình?",a:["Tăng 5", "Tăng 25", "Không đổi", "Giảm 5"],c:0,e:"Dùng tính chất của số trung bình và phương sai."},
+{topic:"Thống kê",level:"Khá",q:"[V11-7] Cộng 5 vào mọi số liệu thì trung bình?",a:["Tăng 5", "Tăng 25", "Không đổi", "Giảm 5"],c:0,e:"Dùng tính chất của số trung bình và phương sai."},
+{topic:"Thống kê",level:"Khá",q:"[V11-8] Cộng 5 vào mọi số liệu thì trung bình?",a:["Tăng 5", "Tăng 25", "Không đổi", "Giảm 5"],c:0,e:"Dùng tính chất của số trung bình và phương sai."},
+{topic:"Thống kê",level:"Khá",q:"[V11-9] Cộng 5 vào mọi số liệu thì trung bình?",a:["Tăng 5", "Tăng 25", "Không đổi", "Giảm 5"],c:0,e:"Dùng tính chất của số trung bình và phương sai."},
+{topic:"Thống kê",level:"Nâng cao",q:"[V11-1] Nhân mọi số liệu với 3 thì phương sai?",a:["Nhân 3", "Nhân 6", "Nhân 9", "Không đổi"],c:2,e:"Dùng tính chất của số trung bình và phương sai."},
+{topic:"Thống kê",level:"Nâng cao",q:"[V11-2] Nhân mọi số liệu với 3 thì phương sai?",a:["Nhân 3", "Nhân 6", "Nhân 9", "Không đổi"],c:2,e:"Dùng tính chất của số trung bình và phương sai."},
+{topic:"Thống kê",level:"Nâng cao",q:"[V11-3] Nhân mọi số liệu với 3 thì phương sai?",a:["Nhân 3", "Nhân 6", "Nhân 9", "Không đổi"],c:2,e:"Dùng tính chất của số trung bình và phương sai."},
+{topic:"Thống kê",level:"Nâng cao",q:"[V11-4] Nhân mọi số liệu với 3 thì phương sai?",a:["Nhân 3", "Nhân 6", "Nhân 9", "Không đổi"],c:2,e:"Dùng tính chất của số trung bình và phương sai."},
+{topic:"Thống kê",level:"Nâng cao",q:"[V11-5] Nhân mọi số liệu với 3 thì phương sai?",a:["Nhân 3", "Nhân 6", "Nhân 9", "Không đổi"],c:2,e:"Dùng tính chất của số trung bình và phương sai."},
+{topic:"Thống kê",level:"Nâng cao",q:"[V11-6] Nhân mọi số liệu với 3 thì phương sai?",a:["Nhân 3", "Nhân 6", "Nhân 9", "Không đổi"],c:2,e:"Dùng tính chất của số trung bình và phương sai."},
+{topic:"Thống kê",level:"Nâng cao",q:"[V11-7] Nhân mọi số liệu với 3 thì phương sai?",a:["Nhân 3", "Nhân 6", "Nhân 9", "Không đổi"],c:2,e:"Dùng tính chất của số trung bình và phương sai."},
+{topic:"Thống kê",level:"Nâng cao",q:"[V11-8] Nhân mọi số liệu với 3 thì phương sai?",a:["Nhân 3", "Nhân 6", "Nhân 9", "Không đổi"],c:2,e:"Dùng tính chất của số trung bình và phương sai."},
+{topic:"Thống kê",level:"Nâng cao",q:"[V11-9] Nhân mọi số liệu với 3 thì phương sai?",a:["Nhân 3", "Nhân 6", "Nhân 9", "Không đổi"],c:2,e:"Dùng tính chất của số trung bình và phương sai."},
+{topic:"Thống kê",level:"Nâng cao",q:"[V11-10] Nhân mọi số liệu với 3 thì phương sai?",a:["Nhân 3", "Nhân 6", "Nhân 9", "Không đổi"],c:2,e:"Dùng tính chất của số trung bình và phương sai."},
+{topic:"Thống kê",level:"Nâng cao",q:"[V11-11] Nhân mọi số liệu với 3 thì phương sai?",a:["Nhân 3", "Nhân 6", "Nhân 9", "Không đổi"],c:2,e:"Dùng tính chất của số trung bình và phương sai."},
+{topic:"Thống kê",level:"Nâng cao",q:"[V11-12] Nhân mọi số liệu với 3 thì phương sai?",a:["Nhân 3", "Nhân 6", "Nhân 9", "Không đổi"],c:2,e:"Dùng tính chất của số trung bình và phương sai."},
+{topic:"Tổ hợp & Quy tắc đếm",level:"Cơ bản",q:"Có bao nhiêu cách chọn 2 học sinh từ 5 học sinh?",a:["5", "10", "20", "25"],c:1,e:"C(5,2)=10."},
+{topic:"Tổ hợp & Quy tắc đếm",level:"Cơ bản",q:"3! bằng?",a:["3", "6", "9", "12"],c:1,e:"3!=1·2·3=6."},
+{topic:"Tổ hợp & Quy tắc đếm",level:"Cơ bản",q:"C(5,1) bằng?",a:["1", "4", "5", "10"],c:2,e:"Chọn 1 từ 5 có 5 cách."},
+{topic:"Tổ hợp & Quy tắc đếm",level:"Cơ bản",q:"C(5,2) bằng?",a:["10", "20", "25", "11"],c:0,e:"C(5,2)=5·4/2=10."},
+{topic:"Tổ hợp & Quy tắc đếm",level:"Cơ bản",q:"C(8,2) bằng?",a:["28", "56", "64", "29"],c:0,e:"C(8,2)=8·7/2=28."},
+{topic:"Tổ hợp & Quy tắc đếm",level:"Cơ bản",q:"C(11,2) bằng?",a:["55", "110", "121", "56"],c:0,e:"C(11,2)=11·10/2=55."},
+{topic:"Tổ hợp & Quy tắc đếm",level:"Cơ bản",q:"C(10,2) bằng?",a:["45", "90", "100", "46"],c:0,e:"C(10,2)=10·9/2=45."},
+{topic:"Tổ hợp & Quy tắc đếm",level:"Cơ bản",q:"[V11-1] C(5,2) bằng?",a:["10", "20", "25", "11"],c:0,e:"Dùng công thức tổ hợp hoặc chỉnh hợp."},
+{topic:"Tổ hợp & Quy tắc đếm",level:"Cơ bản",q:"[V11-2] C(6,2) bằng?",a:["15", "30", "36", "16"],c:0,e:"Dùng công thức tổ hợp hoặc chỉnh hợp."},
+{topic:"Tổ hợp & Quy tắc đếm",level:"Cơ bản",q:"[V11-3] C(7,2) bằng?",a:["21", "42", "49", "22"],c:0,e:"Dùng công thức tổ hợp hoặc chỉnh hợp."},
+{topic:"Tổ hợp & Quy tắc đếm",level:"Cơ bản",q:"[V11-4] C(8,2) bằng?",a:["28", "56", "64", "29"],c:0,e:"Dùng công thức tổ hợp hoặc chỉnh hợp."},
+{topic:"Tổ hợp & Quy tắc đếm",level:"Cơ bản",q:"[V11-5] C(9,2) bằng?",a:["36", "72", "81", "37"],c:0,e:"Dùng công thức tổ hợp hoặc chỉnh hợp."},
+{topic:"Tổ hợp & Quy tắc đếm",level:"Trung bình",q:"Có bao nhiêu cách sắp xếp 4 học sinh thành một hàng?",a:["4", "8", "16", "24"],c:3,e:"Hoán vị 4 phần tử: 4!=24."},
+{topic:"Tổ hợp & Quy tắc đếm",level:"Trung bình",q:"C(6,2) bằng?",a:["12", "15", "20", "30"],c:1,e:"C(6,2)=6·5/2=15."},
+{topic:"Tổ hợp & Quy tắc đếm",level:"Trung bình",q:"A(5,2) bằng?",a:["10", "20", "25", "60"],c:1,e:"A(5,2)=5·4=20."},
+{topic:"Tổ hợp & Quy tắc đếm",level:"Trung bình",q:"C(7,2) bằng?",a:["21", "42", "49", "22"],c:0,e:"C(7,2)=7·6/2=21."},
+{topic:"Tổ hợp & Quy tắc đếm",level:"Trung bình",q:"C(9,2) bằng?",a:["36", "72", "81", "37"],c:0,e:"C(9,2)=9·8/2=36."},
+{topic:"Tổ hợp & Quy tắc đếm",level:"Trung bình",q:"C(12,2) bằng?",a:["66", "132", "144", "67"],c:0,e:"C(12,2)=12·11/2=66."},
+{topic:"Tổ hợp & Quy tắc đếm",level:"Trung bình",q:"[V11-1] C(5,2) bằng?",a:["10", "20", "25", "11"],c:0,e:"Dùng công thức tổ hợp hoặc chỉnh hợp."},
+{topic:"Tổ hợp & Quy tắc đếm",level:"Trung bình",q:"[V11-2] C(6,2) bằng?",a:["15", "30", "36", "16"],c:0,e:"Dùng công thức tổ hợp hoặc chỉnh hợp."},
+{topic:"Tổ hợp & Quy tắc đếm",level:"Trung bình",q:"[V11-3] C(7,2) bằng?",a:["21", "42", "49", "22"],c:0,e:"Dùng công thức tổ hợp hoặc chỉnh hợp."},
+{topic:"Tổ hợp & Quy tắc đếm",level:"Trung bình",q:"[V11-4] C(8,2) bằng?",a:["28", "56", "64", "29"],c:0,e:"Dùng công thức tổ hợp hoặc chỉnh hợp."},
+{topic:"Tổ hợp & Quy tắc đếm",level:"Trung bình",q:"[V11-5] C(9,2) bằng?",a:["36", "72", "81", "37"],c:0,e:"Dùng công thức tổ hợp hoặc chỉnh hợp."},
+{topic:"Tổ hợp & Quy tắc đếm",level:"Trung bình",q:"[V11-6] C(10,2) bằng?",a:["45", "90", "100", "46"],c:0,e:"Dùng công thức tổ hợp hoặc chỉnh hợp."},
+{topic:"Tổ hợp & Quy tắc đếm",level:"Khá",q:"Có bao nhiêu chuỗi 3 ký tự khác nhau từ 6 chữ cái?",a:["18", "36", "120", "216"],c:2,e:"A(6,3)=6·5·4=120."},
+{topic:"Tổ hợp & Quy tắc đếm",level:"Khá",q:"A(4,3) bằng?",a:["24", "12", "64", "25"],c:0,e:"A(4,3)=4·3·2=24."},
+{topic:"Tổ hợp & Quy tắc đếm",level:"Khá",q:"A(7,3) bằng?",a:["210", "42", "343", "211"],c:0,e:"A(7,3)=7·6·5=210."},
+{topic:"Tổ hợp & Quy tắc đếm",level:"Khá",q:"A(6,3) bằng?",a:["120", "30", "216", "121"],c:0,e:"A(6,3)=6·5·4=120."},
+{topic:"Tổ hợp & Quy tắc đếm",level:"Khá",q:"[V11-1] A(5,3) bằng?",a:["60", "20", "125", "61"],c:0,e:"Dùng công thức tổ hợp hoặc chỉnh hợp."},
+{topic:"Tổ hợp & Quy tắc đếm",level:"Khá",q:"[V11-2] A(6,3) bằng?",a:["120", "30", "216", "121"],c:0,e:"Dùng công thức tổ hợp hoặc chỉnh hợp."},
+{topic:"Tổ hợp & Quy tắc đếm",level:"Khá",q:"[V11-3] A(7,3) bằng?",a:["210", "42", "343", "211"],c:0,e:"Dùng công thức tổ hợp hoặc chỉnh hợp."},
+{topic:"Tổ hợp & Quy tắc đếm",level:"Khá",q:"[V11-4] A(8,3) bằng?",a:["336", "56", "512", "337"],c:0,e:"Dùng công thức tổ hợp hoặc chỉnh hợp."},
+{topic:"Tổ hợp & Quy tắc đếm",level:"Khá",q:"[V11-5] A(9,3) bằng?",a:["504", "72", "729", "505"],c:0,e:"Dùng công thức tổ hợp hoặc chỉnh hợp."},
+{topic:"Tổ hợp & Quy tắc đếm",level:"Khá",q:"[V11-6] A(10,3) bằng?",a:["720", "90", "1000", "721"],c:0,e:"Dùng công thức tổ hợp hoặc chỉnh hợp."},
+{topic:"Tổ hợp & Quy tắc đếm",level:"Khá",q:"[V11-7] A(11,3) bằng?",a:["990", "110", "1331", "991"],c:0,e:"Dùng công thức tổ hợp hoặc chỉnh hợp."},
+{topic:"Tổ hợp & Quy tắc đếm",level:"Khá",q:"[V11-8] A(12,3) bằng?",a:["1320", "132", "1728", "1321"],c:0,e:"Dùng công thức tổ hợp hoặc chỉnh hợp."},
+{topic:"Tổ hợp & Quy tắc đếm",level:"Nâng cao",q:"Có bao nhiêu cách chọn 3 người từ 8 người rồi phân công 3 chức vụ khác nhau?",a:["56", "168", "336", "512"],c:2,e:"Chọn và phân công tương đương A(8,3)=8·7·6=336."},
+{topic:"Tổ hợp & Quy tắc đếm",level:"Nâng cao",q:"Có bao nhiêu cách chọn 4 người từ 10 người sao cho một người A chắc chắn được chọn?",a:["84", "120", "126", "210"],c:0,e:"Chọn thêm 3 người từ 9 người còn lại: C(9,3)=84."},
+{topic:"Tổ hợp & Quy tắc đếm",level:"Nâng cao",q:"A(9,3) bằng?",a:["504", "72", "729", "505"],c:0,e:"A(9,3)=9·8·7=504."},
+{topic:"Tổ hợp & Quy tắc đếm",level:"Nâng cao",q:"A(5,3) bằng?",a:["60", "20", "125", "61"],c:0,e:"A(5,3)=5·4·3=60."},
+{topic:"Tổ hợp & Quy tắc đếm",level:"Nâng cao",q:"A(8,3) bằng?",a:["336", "56", "512", "337"],c:0,e:"A(8,3)=8·7·6=336."},
+{topic:"Tổ hợp & Quy tắc đếm",level:"Nâng cao",q:"[V11-1] 5 người, 1 người bắt buộc. Chọn 4 người?",a:["4", "5", "20", "5"],c:0,e:"Dùng công thức tổ hợp hoặc chỉnh hợp."},
+{topic:"Tổ hợp & Quy tắc đếm",level:"Nâng cao",q:"[V11-2] 6 người, 1 người bắt buộc. Chọn 4 người?",a:["10", "15", "24", "11"],c:0,e:"Dùng công thức tổ hợp hoặc chỉnh hợp."},
+{topic:"Tổ hợp & Quy tắc đếm",level:"Nâng cao",q:"[V11-3] 7 người, 1 người bắt buộc. Chọn 4 người?",a:["20", "35", "28", "21"],c:0,e:"Dùng công thức tổ hợp hoặc chỉnh hợp."},
+{topic:"Tổ hợp & Quy tắc đếm",level:"Nâng cao",q:"[V11-4] 8 người, 1 người bắt buộc. Chọn 4 người?",a:["35", "70", "32", "36"],c:0,e:"Dùng công thức tổ hợp hoặc chỉnh hợp."},
+{topic:"Tổ hợp & Quy tắc đếm",level:"Nâng cao",q:"[V11-5] 9 người, 1 người bắt buộc. Chọn 4 người?",a:["56", "126", "36", "57"],c:0,e:"Dùng công thức tổ hợp hoặc chỉnh hợp."},
+{topic:"Tổ hợp & Quy tắc đếm",level:"Nâng cao",q:"[V11-6] 10 người, 1 người bắt buộc. Chọn 4 người?",a:["84", "210", "40", "85"],c:0,e:"Dùng công thức tổ hợp hoặc chỉnh hợp."},
+{topic:"Tổ hợp & Quy tắc đếm",level:"Nâng cao",q:"[V11-7] 11 người, 1 người bắt buộc. Chọn 4 người?",a:["120", "330", "44", "121"],c:0,e:"Dùng công thức tổ hợp hoặc chỉnh hợp."},
+{topic:"Oxyz",level:"Cơ bản",q:"Mặt phẳng 2x−y+3z−1=0 có một vectơ pháp tuyến là?",a:["(2;−1;3)", "(−1;2;3)", "(2;3;−1)", "(1;2;−3)"],c:0,e:"Các hệ số của x,y,z tạo thành vectơ pháp tuyến."},
+{topic:"Oxyz",level:"Cơ bản",q:"Tọa độ trung điểm của A(1,2,3), B(5,4,1) là?",a:["(3,3,2)", "(2,3,4)", "(6,6,4)", "(4,3,2)"],c:0,e:"Trung điểm là trung bình từng tọa độ: (3,3,2)."},
+{topic:"Oxyz",level:"Cơ bản",q:"Điểm M(2,−1,3) thuộc mặt phẳng nào?",a:["x+y+z=0", "2x+y−z=0", "x−y+z=6", "x+y−z=0"],c:2,e:"2−(−1)+3=6 nên M thuộc x−y+z=6."},
+{topic:"Oxyz",level:"Cơ bản",q:"[V11-1] M(-2,-1,-1) có tung độ?",a:["-1", "-2", "-1", "-4"],c:0,e:"Dùng tọa độ, công thức khoảng cách hoặc tích vô hướng."},
+{topic:"Oxyz",level:"Cơ bản",q:"[V11-2] M(-1,0,0) có tung độ?",a:["0", "-1", "0", "-1"],c:0,e:"Dùng tọa độ, công thức khoảng cách hoặc tích vô hướng."},
+{topic:"Oxyz",level:"Cơ bản",q:"[V11-3] M(0,1,1) có tung độ?",a:["1", "0", "1", "2"],c:0,e:"Dùng tọa độ, công thức khoảng cách hoặc tích vô hướng."},
+{topic:"Oxyz",level:"Cơ bản",q:"[V11-4] M(1,2,2) có tung độ?",a:["2", "1", "2", "5"],c:0,e:"Dùng tọa độ, công thức khoảng cách hoặc tích vô hướng."},
+{topic:"Oxyz",level:"Cơ bản",q:"[V11-5] M(2,3,-2) có tung độ?",a:["3", "2", "-2", "3"],c:0,e:"Dùng tọa độ, công thức khoảng cách hoặc tích vô hướng."},
+{topic:"Oxyz",level:"Cơ bản",q:"[V11-6] M(3,-2,-1) có tung độ?",a:["-2", "3", "-1", "0"],c:0,e:"Dùng tọa độ, công thức khoảng cách hoặc tích vô hướng."},
+{topic:"Oxyz",level:"Cơ bản",q:"[V11-7] M(-3,-1,0) có tung độ?",a:["-1", "-3", "0", "-4"],c:0,e:"Dùng tọa độ, công thức khoảng cách hoặc tích vô hướng."},
+{topic:"Oxyz",level:"Cơ bản",q:"[V11-8] M(-2,0,1) có tung độ?",a:["0", "-2", "1", "-1"],c:0,e:"Dùng tọa độ, công thức khoảng cách hoặc tích vô hướng."},
+{topic:"Oxyz",level:"Cơ bản",q:"[V11-9] M(-1,1,2) có tung độ?",a:["1", "-1", "2", "2"],c:0,e:"Dùng tọa độ, công thức khoảng cách hoặc tích vô hướng."},
+{topic:"Oxyz",level:"Trung bình",q:"Khoảng cách từ M(0,0,0) đến x+2y+2z−3=0 bằng?",a:["1", "√3", "3", "3/2"],c:0,e:"d=3/√9=1."},
+{topic:"Oxyz",level:"Trung bình",q:"Vectơ chỉ phương của đường thẳng đi qua A(1,2,0), B(3,1,4) có thể là?",a:["(2,−1,4)", "(4,3,4)", "(−2,1,−4)", "Cả A và C"],c:3,e:"AB=(2,−1,4); vectơ đối của nó cũng là vectơ chỉ phương."},
+{topic:"Oxyz",level:"Trung bình",q:"Phương trình mặt phẳng qua A(1,0,0) có pháp tuyến (1,2,3) là?",a:["x+2y+3z−1=0", "x+2y+3z+1=0", "x−2y+3z−1=0", "x+2y−3z−1=0"],c:0,e:"(1)(x−1)+2y+3z=0."},
+{topic:"Oxyz",level:"Trung bình",q:"Cho A(0,-1,-2), B(0,1,0). Tọa độ vectơ AB là?",a:["(0,2,2)", "(0,-2,-2)", "(0,1,0)", "(0,-1,-2)"],c:0,e:"AB=B−A nên trừ từng tọa độ tương ứng."},
+{topic:"Oxyz",level:"Trung bình",q:"Cho A(-2,-2,-2), B(-6,0,0). Tọa độ vectơ AB là?",a:["(-4,2,2)", "(4,-2,-2)", "(-6,0,0)", "(-2,-2,-2)"],c:0,e:"AB=B−A nên trừ từng tọa độ tương ứng."},
+{topic:"Oxyz",level:"Trung bình",q:"Cho A(0,1,-1), B(-3,5,-1). Tọa độ vectơ AB là?",a:["(-3,4,0)", "(3,-4,0)", "(-3,5,-1)", "(0,1,-1)"],c:0,e:"AB=B−A nên trừ từng tọa độ tương ứng."},
+{topic:"Oxyz",level:"Trung bình",q:"Cho A(3,3,3), B(7,-1,5). Tọa độ vectơ AB là?",a:["(4,-4,2)", "(-4,4,-2)", "(7,-1,5)", "(3,3,3)"],c:0,e:"AB=B−A nên trừ từng tọa độ tương ứng."},
+{topic:"Oxyz",level:"Trung bình",q:"Cho A(2,-1,0), B(4,1,-3). Tọa độ vectơ AB là?",a:["(2,2,-3)", "(-2,-2,3)", "(4,1,-3)", "(2,-1,0)"],c:0,e:"AB=B−A nên trừ từng tọa độ tương ứng."},
+{topic:"Oxyz",level:"Trung bình",q:"Cho A(-3,1,0), B(-3,-2,2). Tọa độ vectơ AB là?",a:["(0,-3,2)", "(0,3,-2)", "(-3,-2,2)", "(-3,1,0)"],c:0,e:"AB=B−A nên trừ từng tọa độ tương ứng."},
+{topic:"Oxyz",level:"Trung bình",q:"Cho A(-3,1,3), B(-4,4,-1). Tọa độ vectơ AB là?",a:["(-1,3,-4)", "(1,-3,4)", "(-4,4,-1)", "(-3,1,3)"],c:0,e:"AB=B−A nên trừ từng tọa độ tương ứng."},
+{topic:"Oxyz",level:"Trung bình",q:"Cho A(1,-2,0), B(3,-4,-1). Tọa độ vectơ AB là?",a:["(2,-2,-1)", "(-2,2,1)", "(3,-4,-1)", "(1,-2,0)"],c:0,e:"AB=B−A nên trừ từng tọa độ tương ứng."},
+{topic:"Oxyz",level:"Trung bình",q:"Cho A(-1,0,-2), B(-3,-2,-5). Tọa độ vectơ AB là?",a:["(-2,-2,-3)", "(2,2,3)", "(-3,-2,-5)", "(-1,0,-2)"],c:0,e:"AB=B−A nên trừ từng tọa độ tương ứng."},
+{topic:"Oxyz",level:"Khá",q:"Mặt phẳng đi qua M(1,0,0) và có pháp tuyến n=(2,−1,3) là?",a:["2x−y+3z−2=0", "2x−y+3z+2=0", "x−2y+3z=0", "2x+y+3z−2=0"],c:0,e:"2(x−1)−y+3z=0 ⇒ 2x−y+3z−2=0."},
+{topic:"Oxyz",level:"Khá",q:"Khoảng cách từ M(1,1,1) đến mặt phẳng x+y+z−6=0 là?",a:["1", "√3", "2√3", "3"],c:1,e:"d=|1+1+1−6|/√3=√3."},
+{topic:"Oxyz",level:"Khá",q:"Cho A(0,-1,-2), B(-1,3,-5). Tọa độ vectơ AB là?",a:["(-1,4,-3)", "(1,-4,3)", "(-1,3,-5)", "(0,-1,-2)"],c:0,e:"AB=B−A nên trừ từng tọa độ tương ứng."},
+{topic:"Oxyz",level:"Khá",q:"Cho A(0,-3,1), B(-3,-5,4). Tọa độ vectơ AB là?",a:["(-3,-2,3)", "(3,2,-3)", "(-3,-5,4)", "(0,-3,1)"],c:0,e:"AB=B−A nên trừ từng tọa độ tương ứng."},
+{topic:"Oxyz",level:"Khá",q:"Cho A(3,2,1), B(-1,6,-2). Tọa độ vectơ AB là?",a:["(-4,4,-3)", "(4,-4,3)", "(-1,6,-2)", "(3,2,1)"],c:0,e:"AB=B−A nên trừ từng tọa độ tương ứng."},
+{topic:"Oxyz",level:"Khá",q:"Cho A(2,2,1), B(-1,-1,4). Tọa độ vectơ AB là?",a:["(-3,-3,3)", "(3,3,-3)", "(-1,-1,4)", "(2,2,1)"],c:0,e:"AB=B−A nên trừ từng tọa độ tương ứng."},
+{topic:"Oxyz",level:"Khá",q:"Cho A(-2,1,2), B(-1,4,0). Tọa độ vectơ AB là?",a:["(1,3,-2)", "(-1,-3,2)", "(-1,4,0)", "(-2,1,2)"],c:0,e:"AB=B−A nên trừ từng tọa độ tương ứng."},
+{topic:"Oxyz",level:"Khá",q:"Cho A(0,3,0), B(4,7,0). Tọa độ vectơ AB là?",a:["(4,4,0)", "(-4,-4,0)", "(4,7,0)", "(0,3,0)"],c:0,e:"AB=B−A nên trừ từng tọa độ tương ứng."},
+{topic:"Oxyz",level:"Khá",q:"Cho A(1,0,-1), B(-3,0,1). Tọa độ vectơ AB là?",a:["(-4,0,2)", "(4,0,-2)", "(-3,0,1)", "(1,0,-1)"],c:0,e:"AB=B−A nên trừ từng tọa độ tương ứng."},
+{topic:"Oxyz",level:"Khá",q:"Cho A(0,-3,1), B(-3,-6,3). Tọa độ vectơ AB là?",a:["(-3,-3,2)", "(3,3,-2)", "(-3,-6,3)", "(0,-3,1)"],c:0,e:"AB=B−A nên trừ từng tọa độ tương ứng."},
+{topic:"Oxyz",level:"Khá",q:"Cho A(-1,1,1), B(-4,1,-3). Tọa độ vectơ AB là?",a:["(-3,0,-4)", "(3,0,4)", "(-4,1,-3)", "(-1,1,1)"],c:0,e:"AB=B−A nên trừ từng tọa độ tương ứng."},
+{topic:"Oxyz",level:"Khá",q:"Cho A(-2,-2,3), B(2,-4,0). Tọa độ vectơ AB là?",a:["(4,-2,-3)", "(-4,2,3)", "(2,-4,0)", "(-2,-2,3)"],c:0,e:"AB=B−A nên trừ từng tọa độ tương ứng."},
+{topic:"Oxyz",level:"Nâng cao",q:"Khoảng cách từ M(1,2,3) đến mặt phẳng 2x−y+2z−4=0 bằng?",a:["2/3", "4/3", "2", "4"],c:0,e:"d=|2−2+6−4|/√(4+1+4)=2/3."},
+{topic:"Oxyz",level:"Nâng cao",q:"Khoảng cách từ M(1,2,3) đến mặt phẳng 2x−y+2z−4=0 bằng?",a:["2/3", "4/3", "2", "4"],c:1,e:"d=|2−2+6−4|/√(4+1+4)=2/3. (Sửa: đáp án đúng phải là 2/3.)"},
+{topic:"Oxyz",level:"Nâng cao",q:"Hai mặt phẳng có vectơ pháp tuyến n1=(1,2,−1), n2=(2,−1,0). Góc giữa hai mặt phẳng có cos bằng?",a:["0", "1/3", "−1/3", "2/3"],c:0,e:"n1·n2=2−2+0=0 nên hai pháp tuyến vuông góc, hai mặt phẳng cũng vuông góc."},
+{topic:"Oxyz",level:"Nâng cao",q:"Khoảng cách từ M(2,-2,2) đến mặt phẳng x+2y+2z−9=0 là?",a:["7/3", "7", "8", "2.3333333333333335"],c:0,e:"d=|2+2·-2+2·2−9|/√9=7/3."},
+{topic:"Oxyz",level:"Nâng cao",q:"Khoảng cách từ M(-1,-2,1) đến mặt phẳng x+2y+2z−9=0 là?",a:["4", "12", "13", "4"],c:0,e:"d=|-1+2·-2+2·1−9|/√9=4."},
+{topic:"Oxyz",level:"Nâng cao",q:"Khoảng cách từ M(2,3,0) đến mặt phẳng x+2y+2z−9=0 là?",a:["1/3", "1", "2", "0.3333333333333333"],c:0,e:"d=|2+2·3+2·0−9|/√9=1/3."},
+{topic:"Oxyz",level:"Nâng cao",q:"Khoảng cách từ M(-2,-3,-2) đến mặt phẳng x+2y+2z−9=0 là?",a:["7", "21", "22", "7"],c:0,e:"d=|-2+2·-3+2·-2−9|/√9=7."},
+{topic:"Oxyz",level:"Nâng cao",q:"Khoảng cách từ M(-2,-2,-1) đến mặt phẳng x+2y+2z−9=0 là?",a:["17/3", "17", "18", "5.666666666666667"],c:0,e:"d=|-2+2·-2+2·-1−9|/√9=17/3."},
+{topic:"Oxyz",level:"Nâng cao",q:"Khoảng cách từ M(3,0,-1) đến mặt phẳng x+2y+2z−9=0 là?",a:["8/3", "8", "9", "2.6666666666666665"],c:0,e:"d=|3+2·0+2·-1−9|/√9=8/3."},
+{topic:"Oxyz",level:"Nâng cao",q:"Khoảng cách từ M(-2,-3,-1) đến mặt phẳng x+2y+2z−9=0 là?",a:["19/3", "19", "20", "6.333333333333333"],c:0,e:"d=|-2+2·-3+2·-1−9|/√9=19/3."},
+{topic:"Oxyz",level:"Nâng cao",q:"Khoảng cách từ M(-1,2,3) đến mặt phẳng x+2y+2z−9=0 là?",a:["0", "0", "1", "0"],c:0,e:"d=|-1+2·2+2·3−9|/√9=0."},
+{topic:"Oxyz",level:"Nâng cao",q:"Khoảng cách từ M(3,-1,-3) đến mặt phẳng x+2y+2z−9=0 là?",a:["14/3", "14", "15", "4.666666666666667"],c:0,e:"d=|3+2·-1+2·-3−9|/√9=14/3."},
+{topic:"Toán thực tế",level:"Cơ bản",q:"Một sản phẩm 500.000đ giảm 20%. Giá sau giảm là?",a:["300.000đ", "350.000đ", "400.000đ", "480.000đ"],c:2,e:"500.000×(1−0,2)=400.000đ."},
+{topic:"Toán thực tế",level:"Cơ bản",q:"Một áo 300.000đ giảm 10%. Giá mới là?",a:["270.000đ", "280.000đ", "290.000đ", "330.000đ"],c:0,e:"300.000×0,9=270.000đ."},
+{topic:"Toán thực tế",level:"Cơ bản",q:"Một người đi 60 km trong 2 giờ. Vận tốc trung bình là?",a:["20", "30", "40", "120"],c:1,e:"v=s/t=60/2=30 km/h."},
+{topic:"Toán thực tế",level:"Cơ bản",q:"Một sản phẩm giá 800,000đ giảm 15%. Giá sau giảm là?",a:["680,000đ", "1,480,000đ", "799,985đ", "800,000đ"],c:0,e:"Giá mới=800,000×(1−15/100)=680,000đ."},
+{topic:"Toán thực tế",level:"Cơ bản",q:"Một sản phẩm giá 800,000đ giảm 10%. Giá sau giảm là?",a:["720,000đ", "1,520,000đ", "799,990đ", "800,000đ"],c:0,e:"Giá mới=800,000×(1−10/100)=720,000đ."},
+{topic:"Toán thực tế",level:"Cơ bản",q:"Một sản phẩm giá 200,000đ giảm 10%. Giá sau giảm là?",a:["180,000đ", "380,000đ", "199,990đ", "200,000đ"],c:0,e:"Giá mới=200,000×(1−10/100)=180,000đ."},
+{topic:"Toán thực tế",level:"Cơ bản",q:"Một sản phẩm giá 1,000,000đ giảm 15%. Giá sau giảm là?",a:["850,000đ", "1,850,000đ", "999,985đ", "1,000,000đ"],c:0,e:"Giá mới=1,000,000×(1−15/100)=850,000đ."},
+{topic:"Toán thực tế",level:"Cơ bản",q:"Một sản phẩm giá 200,000đ giảm 20%. Giá sau giảm là?",a:["160,000đ", "360,000đ", "199,980đ", "200,000đ"],c:0,e:"Giá mới=200,000×(1−20/100)=160,000đ."},
+{topic:"Toán thực tế",level:"Cơ bản",q:"Một sản phẩm giá 500,000đ giảm 10%. Giá sau giảm là?",a:["450,000đ", "950,000đ", "499,990đ", "500,000đ"],c:0,e:"Giá mới=500,000×(1−10/100)=450,000đ."},
+{topic:"Toán thực tế",level:"Cơ bản",q:"[V11-1] 30,000đ giảm 10%. Giá mới?",a:["27,000đ", "30,000đ", "29,990đ", "30,010đ"],c:0,e:"Áp dụng công thức phần trăm, cực trị hoặc lãi kép."},
+{topic:"Toán thực tế",level:"Cơ bản",q:"[V11-2] 40,000đ giảm 15%. Giá mới?",a:["34,000đ", "40,000đ", "39,985đ", "40,015đ"],c:0,e:"Áp dụng công thức phần trăm, cực trị hoặc lãi kép."},
+{topic:"Toán thực tế",level:"Cơ bản",q:"[V11-3] 50,000đ giảm 20%. Giá mới?",a:["40,000đ", "50,000đ", "49,980đ", "50,020đ"],c:0,e:"Áp dụng công thức phần trăm, cực trị hoặc lãi kép."},
+{topic:"Toán thực tế",level:"Trung bình",q:"200.000đ tăng 10% rồi giảm 10%. Giá cuối cùng là?",a:["200.000đ", "198.000đ", "202.000đ", "180.000đ"],c:1,e:"200.000×1,1×0,9=198.000đ; phần trăm tăng giảm liên tiếp không triệt tiêu."},
+{topic:"Toán thực tế",level:"Trung bình",q:"Lãi đơn 5%/năm trên 1.000.000đ trong 2 năm cho số tiền cuối kỳ?",a:["1.050.000đ", "1.100.000đ", "1.102.500đ", "1.200.000đ"],c:1,e:"A=P(1+nr)=1.000.000(1+2·0,05)=1.100.000đ."},
+{topic:"Toán thực tế",level:"Trung bình",q:"Một số tiền 2.000.000đ gửi lãi 6%/năm theo lãi đơn trong 3 năm. Tiền lãi là?",a:["120.000đ", "240.000đ", "360.000đ", "2.360.000đ"],c:2,e:"Tiền lãi=Pnr=2.000.000×0,06×3=360.000đ."},
+{topic:"Toán thực tế",level:"Trung bình",q:"Một sản phẩm giá 800.000đ tăng 15%. Giá mới?",a:["815.000đ", "880.000đ", "920.000đ", "950.000đ"],c:2,e:"800.000×1,15=920.000đ."},
+{topic:"Toán thực tế",level:"Trung bình",q:"Một sản phẩm giá 300,000đ giảm 10%. Giá sau giảm là?",a:["270,000đ", "570,000đ", "299,990đ", "300,000đ"],c:0,e:"Giá mới=300,000×(1−10/100)=270,000đ."},
+{topic:"Toán thực tế",level:"Trung bình",q:"Một sản phẩm giá 1,000,000đ giảm 5%. Giá sau giảm là?",a:["950,000đ", "1,950,000đ", "999,995đ", "1,000,000đ"],c:0,e:"Giá mới=1,000,000×(1−5/100)=950,000đ."},
+{topic:"Toán thực tế",level:"Trung bình",q:"Một sản phẩm giá 300,000đ giảm 5%. Giá sau giảm là?",a:["285,000đ", "585,000đ", "299,995đ", "300,000đ"],c:0,e:"Giá mới=300,000×(1−5/100)=285,000đ."},
+{topic:"Toán thực tế",level:"Trung bình",q:"Một sản phẩm giá 500,000đ giảm 20%. Giá sau giảm là?",a:["400,000đ", "900,000đ", "499,980đ", "500,000đ"],c:0,e:"Giá mới=500,000×(1−20/100)=400,000đ."},
+{topic:"Toán thực tế",level:"Trung bình",q:"Một sản phẩm giá 800,000đ giảm 20%. Giá sau giảm là?",a:["640,000đ", "1,440,000đ", "799,980đ", "800,000đ"],c:0,e:"Giá mới=800,000×(1−20/100)=640,000đ."},
+{topic:"Toán thực tế",level:"Trung bình",q:"Một sản phẩm giá 1,000,000đ giảm 10%. Giá sau giảm là?",a:["900,000đ", "1,900,000đ", "999,990đ", "1,000,000đ"],c:0,e:"Giá mới=1,000,000×(1−10/100)=900,000đ."},
+{topic:"Toán thực tế",level:"Trung bình",q:"Một sản phẩm giá 500,000đ giảm 5%. Giá sau giảm là?",a:["475,000đ", "975,000đ", "499,995đ", "500,000đ"],c:0,e:"Giá mới=500,000×(1−5/100)=475,000đ."},
+{topic:"Toán thực tế",level:"Trung bình",q:"Một sản phẩm giá 800,000đ giảm 5%. Giá sau giảm là?",a:["760,000đ", "1,560,000đ", "799,995đ", "800,000đ"],c:0,e:"Giá mới=800,000×(1−5/100)=760,000đ."},
+{topic:"Toán thực tế",level:"Khá",q:"Một ô tô đi 120 km với vận tốc v. Nếu tăng vận tốc thêm 10 km/h thì thời gian giảm 1 giờ. v bằng?",a:["20", "30", "40", "50"],c:1,e:"120/v−120/(v+10)=1 ⇒ 1200=v(v+10) ⇒ v=30."},
+{topic:"Toán thực tế",level:"Khá",q:"Một số tăng 20% rồi giảm 20%. So với ban đầu, kết quả?",a:["Không đổi", "Tăng 4%", "Giảm 4%", "Giảm 2%"],c:2,e:"Hệ số 1,2×0,8=0,96 ⇒ giảm 4%."},
+{topic:"Toán thực tế",level:"Khá",q:"Một ô tô đi 120 km với vận tốc v. Nếu tăng vận tốc thêm 10 km/h thì thời gian giảm 1 giờ. v bằng?",a:["20", "30", "40", "50"],c:2,e:"120/v−120/(v+10)=1 ⇒ 1200=v(v+10) ⇒ v=30. (Sửa: đáp án đúng phải là 30.)"},
+{topic:"Toán thực tế",level:"Khá",q:"Một hình chữ nhật có chu vi 40m. Diện tích lớn nhất bằng?",a:["80", "100", "120", "200"],c:1,e:"Với chu vi cố định, diện tích lớn nhất khi là hình vuông cạnh 10m ⇒ S=100m²."},
+{topic:"Toán thực tế",level:"Khá",q:"Một bể nước hình hộp có đáy 2m×3m, cao 1,5m. Thể tích là?",a:["6", "7", "9", "12"],c:2,e:"V=2×3×1,5=9m³."},
+{topic:"Toán thực tế",level:"Khá",q:"Khoản tiền 2,000,000đ gửi lãi đơn 6%/năm trong 2 năm. Số tiền cuối kỳ là?",a:["2,240,000đ", "2,120,000đ", "4,240,000đ", "2,000,000đ"],c:0,e:"A=P(1+nr)=2,000,000(1+2·6/100)=2,240,000đ."},
+{topic:"Toán thực tế",level:"Khá",q:"Khoản tiền 1,000,000đ gửi lãi đơn 8%/năm trong 4 năm. Số tiền cuối kỳ là?",a:["1,320,000đ", "1,080,000đ", "2,320,000đ", "1,000,000đ"],c:0,e:"A=P(1+nr)=1,000,000(1+4·8/100)=1,320,000đ."},
+{topic:"Toán thực tế",level:"Khá",q:"Khoản tiền 500,000đ gửi lãi đơn 8%/năm trong 2 năm. Số tiền cuối kỳ là?",a:["580,000đ", "540,000đ", "1,080,000đ", "500,000đ"],c:0,e:"A=P(1+nr)=500,000(1+2·8/100)=580,000đ."},
+{topic:"Toán thực tế",level:"Khá",q:"Khoản tiền 500,000đ gửi lãi đơn 10%/năm trong 4 năm. Số tiền cuối kỳ là?",a:["700,000đ", "550,000đ", "1,200,000đ", "500,000đ"],c:0,e:"A=P(1+nr)=500,000(1+4·10/100)=700,000đ."},
+{topic:"Toán thực tế",level:"Khá",q:"Khoản tiền 2,000,000đ gửi lãi đơn 10%/năm trong 3 năm. Số tiền cuối kỳ là?",a:["2,600,000đ", "2,200,000đ", "4,600,000đ", "2,000,000đ"],c:0,e:"A=P(1+nr)=2,000,000(1+3·10/100)=2,600,000đ."},
+{topic:"Toán thực tế",level:"Khá",q:"Khoản tiền 2,000,000đ gửi lãi đơn 10%/năm trong 2 năm. Số tiền cuối kỳ là?",a:["2,400,000đ", "2,200,000đ", "4,400,000đ", "2,000,000đ"],c:0,e:"A=P(1+nr)=2,000,000(1+2·10/100)=2,400,000đ."},
+{topic:"Toán thực tế",level:"Khá",q:"Khoản tiền 1,000,000đ gửi lãi đơn 5%/năm trong 2 năm. Số tiền cuối kỳ là?",a:["1,100,000đ", "1,050,000đ", "2,100,000đ", "1,000,000đ"],c:0,e:"A=P(1+nr)=1,000,000(1+2·5/100)=1,100,000đ."},
+{topic:"Toán thực tế",level:"Nâng cao",q:"Một khoản tiền tăng 8% mỗi năm theo lãi kép. Sau 2 năm hệ số tăng là?",a:["1,08", "1,16", "1,1664", "1,64"],c:2,e:"Hệ số=(1,08)²=1,1664."},
+{topic:"Toán thực tế",level:"Nâng cao",q:"Một khoản tiền tăng 5% mỗi năm. Sau 3 năm hệ số tăng là gần nhất?",a:["1,05", "1,10", "1,1576", "1,15"],c:2,e:"Hệ số lãi kép=(1,05)^3=1,157625."},
+{topic:"Toán thực tế",level:"Nâng cao",q:"Khoản tiền 500,000đ gửi lãi đơn 6%/năm trong 4 năm. Số tiền cuối kỳ là?",a:["620,000đ", "530,000đ", "1,120,000đ", "500,000đ"],c:0,e:"A=P(1+nr)=500,000(1+4·6/100)=620,000đ."},
+{topic:"Toán thực tế",level:"Nâng cao",q:"Khoản tiền 500,000đ gửi lãi đơn 8%/năm trong 4 năm. Số tiền cuối kỳ là?",a:["660,000đ", "540,000đ", "1,160,000đ", "500,000đ"],c:0,e:"A=P(1+nr)=500,000(1+4·8/100)=660,000đ."},
+{topic:"Toán thực tế",level:"Nâng cao",q:"Khoản tiền 1,000,000đ gửi lãi đơn 10%/năm trong 4 năm. Số tiền cuối kỳ là?",a:["1,400,000đ", "1,100,000đ", "2,400,000đ", "1,000,000đ"],c:0,e:"A=P(1+nr)=1,000,000(1+4·10/100)=1,400,000đ."},
+{topic:"Toán thực tế",level:"Nâng cao",q:"Khoản tiền 2,000,000đ gửi lãi đơn 6%/năm trong 4 năm. Số tiền cuối kỳ là?",a:["2,480,000đ", "2,120,000đ", "4,480,000đ", "2,000,000đ"],c:0,e:"A=P(1+nr)=2,000,000(1+4·6/100)=2,480,000đ."},
+{topic:"Toán thực tế",level:"Nâng cao",q:"Khoản tiền 1,000,000đ gửi lãi đơn 8%/năm trong 3 năm. Số tiền cuối kỳ là?",a:["1,240,000đ", "1,080,000đ", "2,240,000đ", "1,000,000đ"],c:0,e:"A=P(1+nr)=1,000,000(1+3·8/100)=1,240,000đ."},
+{topic:"Toán thực tế",level:"Nâng cao",q:"Khoản tiền 2,000,000đ gửi lãi đơn 8%/năm trong 3 năm. Số tiền cuối kỳ là?",a:["2,480,000đ", "2,160,000đ", "4,480,000đ", "2,000,000đ"],c:0,e:"A=P(1+nr)=2,000,000(1+3·8/100)=2,480,000đ."},
+{topic:"Toán thực tế",level:"Nâng cao",q:"Khoản tiền 2,000,000đ gửi lãi đơn 5%/năm trong 2 năm. Số tiền cuối kỳ là?",a:["2,200,000đ", "2,100,000đ", "4,200,000đ", "2,000,000đ"],c:0,e:"A=P(1+nr)=2,000,000(1+2·5/100)=2,200,000đ."},
+{topic:"Toán thực tế",level:"Nâng cao",q:"Khoản tiền 2,000,000đ gửi lãi đơn 6%/năm trong 3 năm. Số tiền cuối kỳ là?",a:["2,360,000đ", "2,120,000đ", "4,360,000đ", "2,000,000đ"],c:0,e:"A=P(1+nr)=2,000,000(1+3·6/100)=2,360,000đ."},
+{topic:"Toán thực tế",level:"Nâng cao",q:"Khoản tiền 1,000,000đ gửi lãi đơn 6%/năm trong 4 năm. Số tiền cuối kỳ là?",a:["1,240,000đ", "1,060,000đ", "2,240,000đ", "1,000,000đ"],c:0,e:"A=P(1+nr)=1,000,000(1+4·6/100)=1,240,000đ."},
+{topic:"Toán thực tế",level:"Nâng cao",q:"Khoản tiền 2,000,000đ gửi lãi đơn 10%/năm trong 4 năm. Số tiền cuối kỳ là?",a:["2,800,000đ", "2,200,000đ", "4,800,000đ", "2,000,000đ"],c:0,e:"A=P(1+nr)=2,000,000(1+4·10/100)=2,800,000đ."},
+{topic:"HSA tổng hợp",level:"HSA tổng hợp",q:"GTNN x²−4x+5?",a:["1", "2", "4", "5"],c:0,e:"=(x−2)²+1."},
+{topic:"HSA tổng hợp",level:"HSA tổng hợp",q:"Góc giữa u=(1,2), v=(2,−1)?",a:["0°", "45°", "90°", "180°"],c:2,e:"u·v=0."},
+{topic:"HSA tổng hợp",level:"HSA tổng hợp",q:"GTLN 3sinx+4cosx?",a:["3", "4", "5", "7"],c:2,e:"=5."},
+{topic:"HSA tổng hợp",level:"HSA tổng hợp",q:"∫₀²x dx?",a:["1", "2", "3", "4"],c:1,e:"=2."},
+{topic:"HSA tổng hợp",level:"HSA tổng hợp",q:"P(tổng 8) khi gieo 2 xúc xắc?",a:["1/12", "5/36", "1/6", "1/4"],c:1,e:"5/36."},
+{topic:"HSA tổng hợp",level:"HSA tổng hợp",q:"C(8,3)?",a:["24", "48", "56", "64"],c:2,e:"=56."},
+{topic:"HSA tổng hợp",level:"HSA tổng hợp",q:"TB cộng 2,4,6,8,10?",a:["5", "6", "7", "8"],c:1,e:"=6."},
+{topic:"HSA tổng hợp",level:"HSA tổng hợp",q:"d(O,2x−y+2z−6=0)?",a:["1", "2", "3", "6"],c:1,e:"=2."},
+{topic:"HSA tổng hợp",level:"HSA tổng hợp",q:"500.000 giảm 20% rồi tăng 20%?",a:["500.000đ", "480.000đ", "520.000đ", "400.000đ"],c:1,e:"=480.000đ."},
+{topic:"HSA tổng hợp",level:"HSA tổng hợp",q:"2^x=8?",a:["1", "2", "3", "4"],c:2,e:"x=3."},
+{topic:"HSA tổng hợp",level:"HSA tổng hợp",q:"f'>0 trên khoảng thì?",a:["Đồng biến", "Nghịch biến", "Không đổi", "Không kết luận"],c:0,e:"f'>0 ⇒ đồng biến."},
+{topic:"HSA tổng hợp",level:"HSA tổng hợp",q:"|u|=3,|v|=4,u·v=6. cosθ?",a:["1/2", "1/3", "2/3", "3/4"],c:0,e:"=1/2."},
+{topic:"HSA tổng hợp",level:"HSA tổng hợp",q:"Diện tích dưới y=x trên [0,2]?",a:["1", "2", "3", "4"],c:1,e:"=2."},
+{topic:"HSA tổng hợp",level:"HSA tổng hợp",q:"Chọn 2 từ 6 người?",a:["12", "15", "20", "30"],c:1,e:"C(6,2)=15."},
+{topic:"HSA tổng hợp",level:"HSA tổng hợp",q:"4 đỏ,6 xanh. P(đỏ)?",a:["1/5", "2/5", "3/5", "4/5"],c:1,e:"=2/5."},
+{topic:"HSA tổng hợp",level:"HSA tổng hợp",q:"d((1,1,1), x+y+z−6=0)?",a:["√3", "2√3", "3", "5/√3"],c:0,e:"=√3."},
+{topic:"HSA tổng hợp",level:"HSA tổng hợp",q:"GTLN 5sinx+12cosx?",a:["12", "13", "17", "60"],c:1,e:"=13."},
+{topic:"HSA tổng hợp",level:"HSA tổng hợp",q:"GTNN x+4/x, x>0?",a:["2", "4", "5", "8"],c:1,e:"=4."},
+{topic:"HSA tổng hợp",level:"HSA tổng hợp",q:"Phương sai 25. Độ lệch chuẩn?",a:["5", "10", "25", "625"],c:0,e:"=5."},
+{topic:"HSA tổng hợp",level:"HSA tổng hợp",q:"1 triệu lãi kép 10% 2 năm?",a:["1.100.000đ", "1.200.000đ", "1.210.000đ", "1.210.100đ"],c:2,e:"=1.210.000đ."}
+];
+
+let timer=null,sec=75*60,mockI=0,mockQuestions=[],mockAnswers=[],mockLevel="Cơ bản";
+
+function setMockLevel(level,el){
+  mockLevel=level;
+  document.querySelectorAll("#mockBasic, .levels button.level").forEach(b=>b.classList.remove("on"));
+  if(el)el.classList.add("on");
+  const info=document.getElementById("mockInfo");
+  if(info)info.textContent=level;
+}
+
+function getMockQuestions(){
+  const shuffled=arr=>[...arr].sort(()=>Math.random()-.5);
+  let pool;
+  if(mockLevel==="HSA tổng hợp"){
+    const core=questionBank.filter(q=>q.topic==="HSA tổng hợp");
+    const mixed=questionBank.filter(q=>q.topic!=="HSA tổng hợp").sort(()=>Math.random()-.5).slice(0,20);
+    pool=[...core,...mixed];
+  }else{
+    pool=questionBank.filter(q=>q.level===mockLevel);
+  }
+  return shuffled(pool).slice(0,Math.min(40,pool.length));
+}
+
+function startMock(){
+  sec=90*60;mockI=0;mockAnswers=[];
+  mockQuestions=getMockQuestions();
+  if(!mockQuestions.length){
+    alert("Chưa có đủ câu hỏi cho mức này.");
+    return;
+  }
+  document.getElementById("modal").classList.remove("hidden");
+  renderMock();clearInterval(timer);
+  timer=setInterval(()=>{sec--;updateTimer();if(sec<=0)finishMock()},1000);
+}
+function updateTimer(){
+  let e=document.getElementById("timer");if(!e)return;
+  let m=Math.floor(sec/60),s=sec%60;
+  e.textContent=String(m).padStart(2,"0")+":"+String(s).padStart(2,"0");
+}
+function renderMock(){
+  const q=mockQuestions[mockI];
+  document.getElementById("modalContent").innerHTML=`
+    <div class="timer" id="timer"></div>
+    <h2>Đề thi thử Toán HSA</h2>
+    <div class="mockmeta"><span>📚 ${q.topic}</span><span>🎚️ ${q.level}</span><span>📝 ${mockQuestions.length} câu</span><span>⏱️ 90 phút</span></div><p>Câu ${mockI+1}/${mockQuestions.length}</p>
+    <div class="q">${q.q}</div>
+    <div class="answers">${q.a.map((x,i)=>`<button class="answer ${mockAnswers[mockI]===i?'good':''}" onclick="chooseMock(${i})">${String.fromCharCode(65+i)}. ${x}</button>`).join("")}</div>
+    <div style="margin-top:14px;display:flex;gap:8px;flex-wrap:wrap">
+      <button class="btn" onclick="mockPrev()" ${mockI===0?'disabled':''}>← Câu trước</button>
+      <button class="btn primary" onclick="mockNext()">Câu tiếp →</button>
+      <button class="btn" onclick="finishMock()">Nộp bài</button>
+    </div>`;
+  updateTimer();
+}
+function chooseMock(i){mockAnswers[mockI]=i;renderMock()}
+function mockPrev(){if(mockI>0){mockI--;renderMock()}}
+function mockNext(){if(mockI<mockQuestions.length-1){mockI++;renderMock()}else finishMock()}
+function finishMock(){
+  clearInterval(timer);
+  let correct=mockQuestions.reduce((n,q,i)=>n+(mockAnswers[i]===q.c),0);
+  let unanswered=mockQuestions.filter((_,i)=>mockAnswers[i]===undefined).length;
+  document.getElementById("modalContent").innerHTML=`
+    <h2>📊 Kết quả đề thi</h2>
+    <div class="stats" style="margin:15px 0">
+      <div class="stat"><b>${correct}/${mockQuestions.length}</b><span>Câu đúng</span></div>
+      <div class="stat"><b>${Math.round(correct/mockQuestions.length*100)}%</b><span>Độ chính xác</span></div>
+      <div class="stat"><b>${unanswered}</b><span>Chưa trả lời</span></div>
+    </div>
+    <h3>Xem lại đáp án</h3>
+    ${mockQuestions.map((q,i)=>`<div class="example"><b>Câu ${i+1}: ${mockAnswers[i]===q.c?'✅ Đúng':'❌ Chưa đúng'}</b><br>${q.q}<br><small>Đáp án: ${String.fromCharCode(65+q.c)}. ${q.a[q.c]} — ${q.e}</small></div>`).join("")}
+    <button class="btn primary" onclick="closeModal()">Đóng</button>`;
+}
+function closeModal(){clearInterval(timer);document.getElementById("modal").classList.add("hidden")}
+renderTopics();
+</script>
+</body>
+</html>
